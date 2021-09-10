@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        SerialPort _serialPort = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
+        SerialPort serialPort = new SerialPort("defaultPortName", 9600, Parity.None, 8, StopBits.One);
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +22,11 @@ namespace WindowsFormsApp1
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void doWhenLoadForm(object sender, EventArgs e)
+        {
+            serialPort.PortName = "COM1";
         }
     }
 }
