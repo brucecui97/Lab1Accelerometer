@@ -40,8 +40,6 @@ namespace WindowsFormsApp1
 
         private void openPort_Click(object sender, EventArgs e)
         {
-            serialPort1.RtsEnable = true;
-            serialPort1.Handshake = Handshake.None;
             serialPort1.Open();
             serialPort1.Write("A");
             timer1.Enabled = true;
