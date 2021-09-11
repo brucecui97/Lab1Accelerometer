@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.IO.Ports;
 using System.Windows.Forms;
 
@@ -8,6 +9,8 @@ namespace WindowsFormsApp1
     {
         SerialPort serialPort1 = new SerialPort("portNameNotSet", 9600, Parity.None, 8, StopBits.One);
         String serialDataString = "";
+        ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
+
         public Form1()
         {
             InitializeComponent();
@@ -40,7 +43,7 @@ namespace WindowsFormsApp1
             while (bytesToRead != 0)
             {
                 int newByte = serialPort1.ReadByte();
-                serialDataString = serialDataString + newByte.ToString() + ", ";
+                dataQueue.Enqueue(newByte);
                 bytesToRead = serialPort1.BytesToRead;
                 //MessageBox.Show("read stuff");
             }
@@ -49,13 +52,23 @@ namespace WindowsFormsApp1
             {
                 //MessageBox.Show("serial port open");
                 serialBytesToReadTxtBox.Text = serialPort1.BytesToRead.ToString();
-                tempStringLenTxtBox.Text = serialDataString.Length.ToString();
-                serialDataStringTxtBox.AppendText(serialDataString);
-                serialDataString = "";
+                tempStringLenTxtBox.Text = dataQueue.Count.ToString();
+                while (!dataQueue.IsEmpty) {
+
+                    int dequeueResult;
+                    if (dataQueue.TryDequeue(out dequeueResult)) {
+                        serialDataStringTxtBox.AppendText(dequeueResult.ToString() + ",");
+                    }
+                }
             }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

@@ -51,6 +51,7 @@
             this.label1.Size = new System.Drawing.Size(135, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "serial bytes to read";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // itemsInQueueTxtBox
             // 
@@ -134,7 +135,6 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 50;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // debugTxtBox
