@@ -13,9 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        SerialPort serialPort = new SerialPort("defaultPortName", 9600, Parity.None, 8, StopBits.One);
+        SerialPort serialPort1 = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
         String serialDataString = "";
-        Timer timer = new Timer();
         public Form1()
         {
             InitializeComponent();
@@ -36,34 +35,44 @@ namespace WindowsFormsApp1
             else
                 comboBoxCOMPorts.SelectedIndex = 0;
 
-            serialPort.PortName = comboBoxCOMPorts.Text;
+            //serialPort1.PortName = comboBoxCOMPorts.Text;
         }
 
         private void openPort_Click(object sender, EventArgs e)
         {
-            serialPort.Open();
-            serialPort.Write("A");
-
-            int newByte = 0;
-            int bytesToRead = serialPort.BytesToRead;
-            while (bytesToRead != 0)
-            {
-                newByte = serialPort.ReadByte();
-                serialDataString = serialDataString + newByte.ToString() + ", ";
-                bytesToRead = serialPort.BytesToRead;
-            }
-
+            serialPort1.RtsEnable = true;
+            serialPort1.Handshake = Handshake.None;
+            serialPort1.Open();
+            serialPort1.Write("A");
+            timer1.Enabled = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (serialPort.IsOpen)
+            //serialPort.Write("A");
+            int bytesToRead = serialPort1.BytesToRead;
+            textBox1.AppendText("triggered Timer event");
+            while (bytesToRead != 0)
             {
-                serialBytesToReadTxtBox.Text = serialPort.BytesToRead.ToString();
+                int newByte = serialPort1.ReadByte();
+                serialDataString = serialDataString + newByte.ToString() + ", ";
+                bytesToRead = serialPort1.BytesToRead;
+                //MessageBox.Show("read stuff");
+            }
+
+            if (serialPort1.IsOpen)
+            {
+                //MessageBox.Show("serial port open");
+                serialBytesToReadTxtBox.Text = serialPort1.BytesToRead.ToString();
                 tempStringLenTxtBox.Text = serialDataString.Length.ToString();
                 serialDataStringTxtBox.AppendText(serialDataString);
                 serialDataString = "";
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
