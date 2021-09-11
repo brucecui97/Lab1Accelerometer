@@ -13,12 +13,6 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void doWhenLoadForm(object sender, EventArgs e)
         {
             comboBoxCOMPorts.Items.Clear();
@@ -42,7 +36,7 @@ namespace WindowsFormsApp1
         {
             //serialPort.Write("A");
             int bytesToRead = serialPort1.BytesToRead;
-            textBox1.AppendText("triggered Timer event");
+            debugTxtBox.AppendText("triggered Timer event");
             while (bytesToRead != 0)
             {
                 int newByte = serialPort1.ReadByte();

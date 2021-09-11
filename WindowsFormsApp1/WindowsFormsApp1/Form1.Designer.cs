@@ -40,7 +40,7 @@
             this.serialDataStringTxtBox = new System.Windows.Forms.TextBox();
             this.comboBoxCOMPorts = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.debugTxtBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -131,28 +131,27 @@
             this.comboBoxCOMPorts.Name = "comboBoxCOMPorts";
             this.comboBoxCOMPorts.Size = new System.Drawing.Size(138, 28);
             this.comboBoxCOMPorts.TabIndex = 3;
-            this.comboBoxCOMPorts.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // timer1
             // 
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // textBox1
+            // debugTxtBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(488, 95);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(422, 332);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.debugTxtBox.Location = new System.Drawing.Point(488, 95);
+            this.debugTxtBox.Multiline = true;
+            this.debugTxtBox.Name = "debugTxtBox";
+            this.debugTxtBox.Size = new System.Drawing.Size(422, 332);
+            this.debugTxtBox.TabIndex = 4;
+            this.debugTxtBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 525);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.debugTxtBox);
             this.Controls.Add(this.comboBoxCOMPorts);
             this.Controls.Add(this.serialDataStringTxtBox);
             this.Controls.Add(this.serialDataStringLabel);
@@ -185,7 +184,7 @@
         private System.Windows.Forms.TextBox serialDataStringTxtBox;
         private System.Windows.Forms.ComboBox comboBoxCOMPorts;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox debugTxtBox;
     }
 }
 
