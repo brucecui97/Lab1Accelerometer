@@ -15,10 +15,12 @@ namespace WindowsFormsApp1
     {
         SerialPort serialPort = new SerialPort("defaultPortName", 9600, Parity.None, 8, StopBits.One);
         String serialDataString = "";
+        Timer timer = new Timer();
         public Form1()
         {
             InitializeComponent();
         }
+
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -44,6 +46,17 @@ namespace WindowsFormsApp1
                 bytesToRead = serialPort.BytesToRead;
             }
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (serialPort.IsOpen)
+            {
+                serialBytesToReadTxtBox.Text = serialPort.BytesToRead.ToString();
+                tempStringLenTxtBox.Text = serialDataString.Length.ToString();
+                serialDataStringTxtBox.AppendText(serialDataString);
+                serialDataString = "";
+            }
         }
     }
 }

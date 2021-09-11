@@ -28,16 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.itemsInQueueTxtBox = new System.Windows.Forms.TextBox();
             this.openPort = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tempStringLenTxtBox = new System.Windows.Forms.TextBox();
+            this.serialBytesToReadTxtBox = new System.Windows.Forms.TextBox();
+            this.serialDataStringLabel = new System.Windows.Forms.Label();
+            this.serialDataStringTxtBox = new System.Windows.Forms.TextBox();
             this.comboBoxCOMPorts = new System.Windows.Forms.ComboBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -45,16 +47,16 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(23, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
+            this.label1.Size = new System.Drawing.Size(105, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "serial bytes to read";
             // 
-            // textBox1
+            // itemsInQueueTxtBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(88, 129);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 1;
+            this.itemsInQueueTxtBox.Location = new System.Drawing.Point(150, 129);
+            this.itemsInQueueTxtBox.Name = "itemsInQueueTxtBox";
+            this.itemsInQueueTxtBox.Size = new System.Drawing.Size(100, 23);
+            this.itemsInQueueTxtBox.TabIndex = 1;
             // 
             // openPort
             // 
@@ -71,49 +73,49 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(23, 100);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 15);
+            this.label2.Size = new System.Drawing.Size(105, 15);
             this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
+            this.label2.Text = "temp string length";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(23, 127);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 15);
+            this.label3.Size = new System.Drawing.Size(85, 15);
             this.label3.TabIndex = 0;
-            this.label3.Text = "label3";
+            this.label3.Text = "items in queue";
             // 
-            // textBox2
+            // tempStringLenTxtBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(88, 100);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 1;
+            this.tempStringLenTxtBox.Location = new System.Drawing.Point(150, 100);
+            this.tempStringLenTxtBox.Name = "tempStringLenTxtBox";
+            this.tempStringLenTxtBox.Size = new System.Drawing.Size(100, 23);
+            this.tempStringLenTxtBox.TabIndex = 1;
             // 
-            // textBox3
+            // serialBytesToReadTxtBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(88, 71);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 23);
-            this.textBox3.TabIndex = 1;
+            this.serialBytesToReadTxtBox.Location = new System.Drawing.Point(150, 71);
+            this.serialBytesToReadTxtBox.Name = "serialBytesToReadTxtBox";
+            this.serialBytesToReadTxtBox.Size = new System.Drawing.Size(100, 23);
+            this.serialBytesToReadTxtBox.TabIndex = 1;
             // 
-            // label4
+            // serialDataStringLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 223);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 15);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "label4";
+            this.serialDataStringLabel.AutoSize = true;
+            this.serialDataStringLabel.Location = new System.Drawing.Point(11, 177);
+            this.serialDataStringLabel.Name = "serialDataStringLabel";
+            this.serialDataStringLabel.Size = new System.Drawing.Size(117, 15);
+            this.serialDataStringLabel.TabIndex = 0;
+            this.serialDataStringLabel.Text = "serialDataStringLabel";
             // 
-            // textBox4
+            // serialDataStringTxtBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(12, 241);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(207, 188);
-            this.textBox4.TabIndex = 1;
+            this.serialDataStringTxtBox.Location = new System.Drawing.Point(11, 195);
+            this.serialDataStringTxtBox.Multiline = true;
+            this.serialDataStringTxtBox.Name = "serialDataStringTxtBox";
+            this.serialDataStringTxtBox.Size = new System.Drawing.Size(207, 188);
+            this.serialDataStringTxtBox.TabIndex = 1;
             // 
             // comboBoxCOMPorts
             // 
@@ -124,20 +126,24 @@
             this.comboBoxCOMPorts.TabIndex = 3;
             this.comboBoxCOMPorts.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 450);
+            this.ClientSize = new System.Drawing.Size(284, 394);
             this.Controls.Add(this.comboBoxCOMPorts);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.serialDataStringTxtBox);
+            this.Controls.Add(this.serialDataStringLabel);
+            this.Controls.Add(this.serialBytesToReadTxtBox);
+            this.Controls.Add(this.tempStringLenTxtBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.openPort);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.itemsInQueueTxtBox);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -150,15 +156,16 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox itemsInQueueTxtBox;
         private System.Windows.Forms.Button openPort;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tempStringLenTxtBox;
+        private System.Windows.Forms.TextBox serialBytesToReadTxtBox;
+        private System.Windows.Forms.Label serialDataStringLabel;
+        private System.Windows.Forms.TextBox serialDataStringTxtBox;
         private System.Windows.Forms.ComboBox comboBoxCOMPorts;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
