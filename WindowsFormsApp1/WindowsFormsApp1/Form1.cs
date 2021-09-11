@@ -29,7 +29,14 @@ namespace WindowsFormsApp1
 
         private void doWhenLoadForm(object sender, EventArgs e)
         {
-            serialPort.PortName = "COM1";
+            comboBoxCOMPorts.Items.Clear();
+            comboBoxCOMPorts.Items.AddRange(System.IO.Ports.SerialPort.GetPortNames());
+            if (comboBoxCOMPorts.Items.Count == 0)
+                comboBoxCOMPorts.Text = "No COM ports!";
+            else
+                comboBoxCOMPorts.SelectedIndex = 0;
+
+            serialPort.PortName = comboBoxCOMPorts.Text;
         }
 
         private void openPort_Click(object sender, EventArgs e)
