@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO.Ports;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        SerialPort serialPort1 = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
+        SerialPort serialPort1 = new SerialPort("portNameNotSet", 9600, Parity.None, 8, StopBits.One);
         String serialDataString = "";
         public Form1()
         {
@@ -35,7 +28,7 @@ namespace WindowsFormsApp1
             else
                 comboBoxCOMPorts.SelectedIndex = 0;
 
-            //serialPort1.PortName = comboBoxCOMPorts.Text;
+            serialPort1.PortName = comboBoxCOMPorts.Text;
         }
 
         private void openPort_Click(object sender, EventArgs e)
