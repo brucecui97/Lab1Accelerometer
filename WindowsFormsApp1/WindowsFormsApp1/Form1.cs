@@ -50,7 +50,8 @@ namespace WindowsFormsApp1
             {
                 serialBytesToReadTxtBox.Text = serialPort1.BytesToRead.ToString();
                 tempStringLenTxtBox.Text = dataQueue.Count.ToString();
-                while (!dataQueue.IsEmpty) {
+                while (!dataQueue.IsEmpty)
+                {
 
                     if (dataQueue.TryDequeue(out int dequeueResult))
                     {
