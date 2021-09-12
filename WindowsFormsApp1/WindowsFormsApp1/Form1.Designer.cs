@@ -39,7 +39,7 @@
             this.serialDataStringLabel = new System.Windows.Forms.Label();
             this.serialDataStringTxtBox = new System.Windows.Forms.TextBox();
             this.comboBoxCOMPorts = new System.Windows.Forms.ComboBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.displayContentTimer = new System.Windows.Forms.Timer(this.components);
             this.debugTxtBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -133,9 +133,9 @@
             this.comboBoxCOMPorts.Size = new System.Drawing.Size(138, 28);
             this.comboBoxCOMPorts.TabIndex = 3;
             // 
-            // timer1
+            // displayContentTimer
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.displayContentTimer.Tick += new System.EventHandler(this.displayContentTimer_tick);
             // 
             // debugTxtBox
             // 
@@ -183,7 +183,7 @@
         private System.Windows.Forms.Label serialDataStringLabel;
         private System.Windows.Forms.TextBox serialDataStringTxtBox;
         private System.Windows.Forms.ComboBox comboBoxCOMPorts;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer displayContentTimer;
         private System.Windows.Forms.TextBox debugTxtBox;
     }
 }

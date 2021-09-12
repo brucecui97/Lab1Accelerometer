@@ -8,7 +8,6 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         SerialPort serialPort1 = new SerialPort("portNameNotSet", 9600, Parity.None, 8, StopBits.One);
-        String serialDataString = "";
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
 
         public Form1()
@@ -19,7 +18,7 @@ namespace WindowsFormsApp1
         private void doWhenLoadForm(object sender, EventArgs e)
         {
             comboBoxCOMPorts.Items.Clear();
-            comboBoxCOMPorts.Items.AddRange(System.IO.Ports.SerialPort.GetPortNames());
+            comboBoxCOMPorts.Items.AddRange(SerialPort.GetPortNames());
             if (comboBoxCOMPorts.Items.Count == 0)
                 comboBoxCOMPorts.Text = "No COM ports!";
             else
@@ -32,12 +31,11 @@ namespace WindowsFormsApp1
         {
             serialPort1.Open();
             serialPort1.Write("A");
-            timer1.Enabled = true;
+            displayContentTimer.Enabled = true;
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void displayContentTimer_tick(object sender, EventArgs e)
         {
-            //serialPort.Write("A");
             int bytesToRead = serialPort1.BytesToRead;
             debugTxtBox.AppendText("triggered Timer event");
             while (bytesToRead != 0)
