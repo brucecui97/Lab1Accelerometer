@@ -42,6 +42,7 @@ namespace WindowsFormsApp1
             int bytesToRead = serialPort1.BytesToRead;
             while (bytesToRead != 0)
             {
+                serialBytesToReadTxtBox.Text = serialPort1.BytesToRead.ToString();
                 int newByte = serialPort1.ReadByte();
                 dataQueue.Enqueue(newByte);
                 bytesToRead = serialPort1.BytesToRead;
