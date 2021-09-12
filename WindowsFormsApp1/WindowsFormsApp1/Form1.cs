@@ -36,25 +36,24 @@ namespace WindowsFormsApp1
 
         private void displayContentTimer_tick(object sender, EventArgs e)
         {
-            int bytesToRead = serialPort1.BytesToRead;
             debugTxtBox.AppendText("triggered Timer event");
+
+            int bytesToRead = serialPort1.BytesToRead;
             while (bytesToRead != 0)
             {
                 int newByte = serialPort1.ReadByte();
                 dataQueue.Enqueue(newByte);
                 bytesToRead = serialPort1.BytesToRead;
-                //MessageBox.Show("read stuff");
             }
 
             if (serialPort1.IsOpen)
             {
-                //MessageBox.Show("serial port open");
                 serialBytesToReadTxtBox.Text = serialPort1.BytesToRead.ToString();
                 tempStringLenTxtBox.Text = dataQueue.Count.ToString();
                 while (!dataQueue.IsEmpty) {
 
-                    int dequeueResult;
-                    if (dataQueue.TryDequeue(out dequeueResult)) {
+                    if (dataQueue.TryDequeue(out int dequeueResult))
+                    {
                         serialDataStringTxtBox.AppendText(dequeueResult.ToString() + ",");
                     }
                 }
