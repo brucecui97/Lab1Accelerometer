@@ -23,15 +23,16 @@ namespace WindowsFormsApp1
                 comboBoxCOMPorts.Text = "No COM ports!";
             else
                 comboBoxCOMPorts.SelectedIndex = 0;
-
             serialPort1.PortName = comboBoxCOMPorts.Text;
         }
 
         private void openPort_Click(object sender, EventArgs e)
         {
+            debugTxtBox.AppendText("clicked open port");
             serialPort1.Open();
             serialPort1.Write("A");
             displayContentTimer.Enabled = true;
+            debugTxtBox.AppendText("enabled timer");
         }
 
         private void displayContentTimer_tick(object sender, EventArgs e)
