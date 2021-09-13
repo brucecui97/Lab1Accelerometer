@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.IO.Ports;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -18,6 +20,7 @@ namespace WindowsFormsApp1
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
         AccelerationAxis nextAccelerationAxis = AccelerationAxis.Unknown;
         Acceleration acceleration = new Acceleration();
+        private static readonly int NEUTRAL_ACCELERATION_VAL = 126;
 
         public Form1()
         {
@@ -55,6 +58,7 @@ namespace WindowsFormsApp1
 
                 int newByte = serialPort1.ReadByte();
                 AssignToAccelerationAxis(newByte);
+                updateOrientationDisplayed();
                 dataQueue.Enqueue(newByte);
 
                 bytesToRead = serialPort1.BytesToRead;
@@ -105,6 +109,30 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void updateOrientationDisplayed()
+        {
+            int AxDiffWithNeutral = acceleration.AxValue - NEUTRAL_ACCELERATION_VAL;
+            int AyDiffWithNeutral = acceleration.AyValue - NEUTRAL_ACCELERATION_VAL;
+            int AzDiffWIthNeutral = acceleration.AzValue - NEUTRAL_ACCELERATION_VAL;
+
+            var diffs = new List<int> {
+                Math.Abs(AxDiffWithNeutral),
+                Math.Abs(AyDiffWithNeutral),
+                Math.Abs(AzDiffWIthNeutral) };
+
+            if (Math.Abs(AxDiffWithNeutral) == diffs.Max())
+            {
+                orientationTxtBox.Text = Math.Sign(AxDiffWithNeutral).ToString() + "X";
+            }
+            else if (Math.Abs(AyDiffWithNeutral) == diffs.Max())
+            {
+                orientationTxtBox.Text = Math.Sign(AyDiffWithNeutral).ToString() + "Y";
+            }
+            else
+            {
+                orientationTxtBox.Text = Math.Sign(AzDiffWIthNeutral).ToString() + "Z";
+            }
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 

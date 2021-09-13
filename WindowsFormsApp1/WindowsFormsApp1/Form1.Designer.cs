@@ -47,6 +47,8 @@
             this.AxTxtBox = new System.Windows.Forms.TextBox();
             this.AzTxtBox = new System.Windows.Forms.TextBox();
             this.AyTxtBox = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.orientationTxtBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -203,11 +205,26 @@
             this.AyTxtBox.Size = new System.Drawing.Size(57, 27);
             this.AyTxtBox.TabIndex = 1;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // orientationTxtBox
+            // 
+            this.orientationTxtBox.Location = new System.Drawing.Point(511, 527);
+            this.orientationTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.orientationTxtBox.Name = "orientationTxtBox";
+            this.orientationTxtBox.Size = new System.Drawing.Size(114, 27);
+            this.orientationTxtBox.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 568);
+            this.Controls.Add(this.orientationTxtBox);
             this.Controls.Add(this.AyTxtBox);
             this.Controls.Add(this.AzTxtBox);
             this.Controls.Add(this.AxTxtBox);
@@ -255,6 +272,8 @@
         private System.Windows.Forms.TextBox AxTxtBox;
         private System.Windows.Forms.TextBox AzTxtBox;
         private System.Windows.Forms.TextBox AyTxtBox;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.TextBox orientationTxtBox;
     }
 }
 
