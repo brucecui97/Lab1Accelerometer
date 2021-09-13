@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
         SerialPort serialPort1 = new SerialPort("portNameNotSet", 9600, Parity.None, 8, StopBits.One);
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
         AccelerationAxis nextAccelerationAxis = AccelerationAxis.Unknown;
+        Acceleration acceleration = new Acceleration();
 
         public Form1()
         {
@@ -84,19 +85,22 @@ namespace WindowsFormsApp1
             }
             else if (nextAccelerationAxis == AccelerationAxis.Ax)
             {
-                AxTxtBox.Text = newByte.ToString();
+                acceleration.AxValue = newByte;
+                AxTxtBox.Text = acceleration.AxValue.ToString();
                 nextAccelerationAxis = AccelerationAxis.Ay;
             }
 
             else if (nextAccelerationAxis == AccelerationAxis.Ay)
             {
-                AyTxtBox.Text = newByte.ToString();
+                acceleration.AyValue = newByte;
+                AyTxtBox.Text = acceleration.AyValue.ToString();
                 nextAccelerationAxis = AccelerationAxis.Az;
             }
 
             else if (nextAccelerationAxis == AccelerationAxis.Az)
             {
-                AzTxtBox.Text = newByte.ToString();
+                acceleration.AzValue = newByte;
+                AzTxtBox.Text = acceleration.AzValue.ToString();
                 nextAccelerationAxis = AccelerationAxis.Unknown;
             }
         }
