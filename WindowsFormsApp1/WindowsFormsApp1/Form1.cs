@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
         AccelerationAxis nextAccelerationAxis = AccelerationAxis.Unknown;
         Acceleration acceleration = new Acceleration();
+        String serialDataString = "";
         private static readonly int NEUTRAL_ACCELERATION_VAL = 126;
 
         public Form1()
@@ -36,7 +37,6 @@ namespace WindowsFormsApp1
                 comboBoxCOMPorts.Text = "No COM ports!";
             else
                 comboBoxCOMPorts.SelectedIndex = 0;
-            serialPort1.PortName = comboBoxCOMPorts.Text;
         }
 
 
@@ -44,6 +44,7 @@ namespace WindowsFormsApp1
         private void openPort_Click(object sender, EventArgs e)
         {
             debugTxtBox.AppendText("clicked open port");
+            serialPort1.PortName = comboBoxCOMPorts.Text;
             serialPort1.Open();
             serialPort1.Write("A");
             displayContentTimer.Enabled = true;
@@ -65,22 +66,22 @@ namespace WindowsFormsApp1
                     updateOrientationDisplayed();
                     writeAccelerationToFile();
                     dataQueue.Enqueue(newByte);
+                    serialDataString = serialDataString + "," + newByte.ToString();
 
                     bytesToRead = serialPort1.BytesToRead;
                 }
 
-
+                serialBytesToReadTxtBox.Text = serialPort1.BytesToRead.ToString();
+                tempStringLenTxtBox.Text = serialDataString.Length.ToString();
+                itemsInQueueTxtBox.Text = dataQueue.Count.ToString();
+                while (!dataQueue.IsEmpty)
                 {
-                    serialBytesToReadTxtBox.Text = serialPort1.BytesToRead.ToString();
-                    tempStringLenTxtBox.Text = dataQueue.Count.ToString();
-                    while (!dataQueue.IsEmpty)
+                    if (dataQueue.TryDequeue(out int dequeueResult))
                     {
-                        if (dataQueue.TryDequeue(out int dequeueResult))
-                        {
-                            serialDataStringTxtBox.AppendText(dequeueResult.ToString() + ",");
-                        }
+                        serialDataStringTxtBox.AppendText(dequeueResult.ToString() + ",");
                     }
                 }
+                serialDataString = "";
             }
         }
 
