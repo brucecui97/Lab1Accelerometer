@@ -53,30 +53,32 @@ namespace WindowsFormsApp1
         private void displayContentTimer_tick(object sender, EventArgs e)
         {
             debugTxtBox.AppendText("triggered Timer event");
-
-            int bytesToRead = serialPort1.BytesToRead;
-            while (bytesToRead != 0)
-            {
-                serialBytesToReadTxtBox.Text = serialPort1.BytesToRead.ToString();
-
-                int newByte = serialPort1.ReadByte();
-                AssignToAccelerationAxis(newByte);
-                updateOrientationDisplayed();
-                writeAccelerationToFile();
-                dataQueue.Enqueue(newByte);
-
-                bytesToRead = serialPort1.BytesToRead;
-            }
-
             if (serialPort1.IsOpen)
             {
-                serialBytesToReadTxtBox.Text = serialPort1.BytesToRead.ToString();
-                tempStringLenTxtBox.Text = dataQueue.Count.ToString();
-                while (!dataQueue.IsEmpty)
+                int bytesToRead = serialPort1.BytesToRead;
+                while (bytesToRead != 0)
                 {
-                    if (dataQueue.TryDequeue(out int dequeueResult))
+                    serialBytesToReadTxtBox.Text = serialPort1.BytesToRead.ToString();
+
+                    int newByte = serialPort1.ReadByte();
+                    AssignToAccelerationAxis(newByte);
+                    updateOrientationDisplayed();
+                    writeAccelerationToFile();
+                    dataQueue.Enqueue(newByte);
+
+                    bytesToRead = serialPort1.BytesToRead;
+                }
+
+
+                {
+                    serialBytesToReadTxtBox.Text = serialPort1.BytesToRead.ToString();
+                    tempStringLenTxtBox.Text = dataQueue.Count.ToString();
+                    while (!dataQueue.IsEmpty)
                     {
-                        serialDataStringTxtBox.AppendText(dequeueResult.ToString() + ",");
+                        if (dataQueue.TryDequeue(out int dequeueResult))
+                        {
+                            serialDataStringTxtBox.AppendText(dequeueResult.ToString() + ",");
+                        }
                     }
                 }
             }
@@ -163,6 +165,14 @@ namespace WindowsFormsApp1
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             serialPort1.Close();
+        }
+
+        private void closePortClick(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                serialPort1.Close();
+            }
         }
     }
 }

@@ -49,6 +49,7 @@
             this.AyTxtBox = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.orientationTxtBox = new System.Windows.Forms.TextBox();
+            this.closePortButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -219,11 +220,23 @@
             this.orientationTxtBox.Size = new System.Drawing.Size(114, 27);
             this.orientationTxtBox.TabIndex = 1;
             // 
+            // closePortButton
+            // 
+            this.closePortButton.Location = new System.Drawing.Point(281, 17);
+            this.closePortButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.closePortButton.Name = "closePortButton";
+            this.closePortButton.Size = new System.Drawing.Size(86, 31);
+            this.closePortButton.TabIndex = 2;
+            this.closePortButton.Text = "close port";
+            this.closePortButton.UseVisualStyleBackColor = true;
+            this.closePortButton.Click += new System.EventHandler(this.closePortClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 568);
+            this.Controls.Add(this.closePortButton);
             this.Controls.Add(this.orientationTxtBox);
             this.Controls.Add(this.AyTxtBox);
             this.Controls.Add(this.AzTxtBox);
@@ -274,6 +287,7 @@
         private System.Windows.Forms.TextBox AyTxtBox;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TextBox orientationTxtBox;
+        private System.Windows.Forms.Button closePortButton;
     }
 }
 
