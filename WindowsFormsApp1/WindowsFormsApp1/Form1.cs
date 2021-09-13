@@ -37,19 +37,6 @@ namespace WindowsFormsApp1
             else
                 comboBoxCOMPorts.SelectedIndex = 0;
             serialPort1.PortName = comboBoxCOMPorts.Text;
-
-            // Create a string array with the lines of text
-            string[] lines = { "First line", "Second line", "Third line" };
-
-            // Set a variable to the Documents path.
-            string docPath = System.AppContext.BaseDirectory;
-
-            // Write the string array to a new file named "WriteLines.txt".
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "WriteLines.txt")))
-            {
-                foreach (string line in lines)
-                    outputFile.WriteLine(line);
-            }
         }
 
 
@@ -75,6 +62,7 @@ namespace WindowsFormsApp1
                 int newByte = serialPort1.ReadByte();
                 AssignToAccelerationAxis(newByte);
                 updateOrientationDisplayed();
+                writeAccelerationToFile();
                 dataQueue.Enqueue(newByte);
 
                 bytesToRead = serialPort1.BytesToRead;
@@ -147,6 +135,19 @@ namespace WindowsFormsApp1
             else
             {
                 orientationTxtBox.Text = Math.Sign(AzDiffWIthNeutral).ToString() + "Z";
+            }
+        }
+
+        private void writeAccelerationToFile()
+        {
+            // Set a variable to the Documents path.
+            string docPath = System.AppContext.BaseDirectory;
+
+            // Write the string array to a new file named "WriteLines.txt".
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "WriteLines.csv"), append: true))
+            {
+                DateTime timeNow = DateTime.Now;
+                outputFile.WriteLine(acceleration.ToString() + "," + "readable: " + timeNow.ToString("MM/dd/yyyy HH:mm:ss.fff"));
             }
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
