@@ -110,5 +110,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            serialPort1.Close();
+        }
     }
 }
