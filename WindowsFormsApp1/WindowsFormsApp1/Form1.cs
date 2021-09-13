@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Windows.Forms;
@@ -36,7 +37,22 @@ namespace WindowsFormsApp1
             else
                 comboBoxCOMPorts.SelectedIndex = 0;
             serialPort1.PortName = comboBoxCOMPorts.Text;
+
+            // Create a string array with the lines of text
+            string[] lines = { "First line", "Second line", "Third line" };
+
+            // Set a variable to the Documents path.
+            string docPath = System.AppContext.BaseDirectory;
+
+            // Write the string array to a new file named "WriteLines.txt".
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "WriteLines.txt")))
+            {
+                foreach (string line in lines)
+                    outputFile.WriteLine(line);
+            }
         }
+
+
 
         private void openPort_Click(object sender, EventArgs e)
         {
