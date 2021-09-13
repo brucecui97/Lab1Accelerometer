@@ -53,30 +53,7 @@ namespace WindowsFormsApp1
                 serialBytesToReadTxtBox.Text = serialPort1.BytesToRead.ToString();
 
                 int newByte = serialPort1.ReadByte();
-                if (nextAccelerationAxis == AccelerationAxis.Unknown)
-                {
-                    if (newByte == 255)
-                    {
-                        nextAccelerationAxis = AccelerationAxis.Ax;
-                    }
-                }
-                else if (nextAccelerationAxis == AccelerationAxis.Ax)
-                {
-                    AxTxtBox.Text = newByte.ToString();
-                    nextAccelerationAxis = AccelerationAxis.Ay;
-                }
-
-                else if (nextAccelerationAxis == AccelerationAxis.Ay)
-                {
-                    AyTxtBox.Text = newByte.ToString();
-                    nextAccelerationAxis = AccelerationAxis.Az;
-                }
-
-                else if (nextAccelerationAxis == AccelerationAxis.Az) {
-                    AzTxtBox.Text = newByte.ToString();
-                    nextAccelerationAxis = AccelerationAxis.Unknown;
-                }
-
+                AssignToAccelerationAxis(newByte);
                 dataQueue.Enqueue(newByte);
 
                 bytesToRead = serialPort1.BytesToRead;
@@ -88,12 +65,39 @@ namespace WindowsFormsApp1
                 tempStringLenTxtBox.Text = dataQueue.Count.ToString();
                 while (!dataQueue.IsEmpty)
                 {
-
                     if (dataQueue.TryDequeue(out int dequeueResult))
                     {
                         serialDataStringTxtBox.AppendText(dequeueResult.ToString() + ",");
                     }
                 }
+            }
+        }
+
+        private void AssignToAccelerationAxis(int newByte)
+        {
+            if (nextAccelerationAxis == AccelerationAxis.Unknown)
+            {
+                if (newByte == 255)
+                {
+                    nextAccelerationAxis = AccelerationAxis.Ax;
+                }
+            }
+            else if (nextAccelerationAxis == AccelerationAxis.Ax)
+            {
+                AxTxtBox.Text = newByte.ToString();
+                nextAccelerationAxis = AccelerationAxis.Ay;
+            }
+
+            else if (nextAccelerationAxis == AccelerationAxis.Ay)
+            {
+                AyTxtBox.Text = newByte.ToString();
+                nextAccelerationAxis = AccelerationAxis.Az;
+            }
+
+            else if (nextAccelerationAxis == AccelerationAxis.Az)
+            {
+                AzTxtBox.Text = newByte.ToString();
+                nextAccelerationAxis = AccelerationAxis.Unknown;
             }
         }
 
