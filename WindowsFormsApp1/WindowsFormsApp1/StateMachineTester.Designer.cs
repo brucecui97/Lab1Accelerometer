@@ -33,9 +33,9 @@ namespace WindowsFormsApp1
             this.ProcessNewDataPoint = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.AyTxtBox = new System.Windows.Forms.TextBox();
+            this.AxTxtBox = new System.Windows.Forms.TextBox();
+            this.AzTxtBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,6 +59,7 @@ namespace WindowsFormsApp1
             this.ProcessNewDataPoint.TabIndex = 3;
             this.ProcessNewDataPoint.Text = "Process New Data Point";
             this.ProcessNewDataPoint.UseVisualStyleBackColor = true;
+            this.ProcessNewDataPoint.Click += new System.EventHandler(this.ProcessNewDataPoint_Click);
             // 
             // label1
             // 
@@ -78,26 +79,26 @@ namespace WindowsFormsApp1
             this.label2.TabIndex = 5;
             this.label2.Text = "Ay";
             // 
-            // textBox2
+            // AyTxtBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(145, 15);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(69, 27);
-            this.textBox2.TabIndex = 6;
+            this.AyTxtBox.Location = new System.Drawing.Point(145, 15);
+            this.AyTxtBox.Name = "AyTxtBox";
+            this.AyTxtBox.Size = new System.Drawing.Size(69, 27);
+            this.AyTxtBox.TabIndex = 6;
             // 
-            // textBox3
+            // AxTxtBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(44, 12);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(55, 27);
-            this.textBox3.TabIndex = 7;
+            this.AxTxtBox.Location = new System.Drawing.Point(44, 12);
+            this.AxTxtBox.Name = "AxTxtBox";
+            this.AxTxtBox.Size = new System.Drawing.Size(55, 27);
+            this.AxTxtBox.TabIndex = 7;
             // 
-            // textBox4
+            // AzTxtBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(267, 15);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(125, 27);
-            this.textBox4.TabIndex = 8;
+            this.AzTxtBox.Location = new System.Drawing.Point(267, 15);
+            this.AzTxtBox.Name = "AzTxtBox";
+            this.AzTxtBox.Size = new System.Drawing.Size(125, 27);
+            this.AzTxtBox.TabIndex = 8;
             // 
             // label3
             // 
@@ -132,7 +133,7 @@ namespace WindowsFormsApp1
             this.textBox5.Size = new System.Drawing.Size(365, 194);
             this.textBox5.TabIndex = 12;
             // 
-            // Form2
+            // StateMachineTester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -141,15 +142,16 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.AzTxtBox);
+            this.Controls.Add(this.AxTxtBox);
+            this.Controls.Add(this.AyTxtBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ProcessNewDataPoint);
             this.Controls.Add(this.Ay);
-            this.Name = "Form2";
+            this.Name = "StateMachineTester";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.StateMachineTester_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,9 +163,9 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button ProcessNewDataPoint;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox AyTxtBox;
+        private System.Windows.Forms.TextBox AxTxtBox;
+        private System.Windows.Forms.TextBox AzTxtBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;

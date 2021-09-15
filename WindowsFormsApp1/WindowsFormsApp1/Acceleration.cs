@@ -10,6 +10,11 @@ namespace WindowsFormsApp1
         public int AyValue = 0;
         public int AzValue = 0;
 
+        public Acceleration(int AxValue, int AyValue, int AzValue) {
+            this.AxValue = AxValue;
+            this.AyValue = AyValue;
+            this.AzValue = AzValue;
+        }
         public override string ToString() {
             return AxValue.ToString() + "," + AyValue.ToString() + "," + AzValue.ToString();
         }
