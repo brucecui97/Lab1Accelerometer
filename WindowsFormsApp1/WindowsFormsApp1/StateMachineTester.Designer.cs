@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
             this.AxTxtBox = new System.Windows.Forms.TextBox();
             this.AzTxtBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.currentStateTxtBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dataHistory = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -111,12 +111,12 @@ namespace WindowsFormsApp1
             this.label3.TabIndex = 9;
             this.label3.Text = "CurrentState";
             // 
-            // textBox1
+            // currentStateTxtBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(330, 140);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(73, 27);
-            this.textBox1.TabIndex = 10;
+            this.currentStateTxtBox.Location = new System.Drawing.Point(330, 140);
+            this.currentStateTxtBox.Name = "currentStateTxtBox";
+            this.currentStateTxtBox.Size = new System.Drawing.Size(141, 27);
+            this.currentStateTxtBox.TabIndex = 10;
             // 
             // label4
             // 
@@ -147,7 +147,7 @@ namespace WindowsFormsApp1
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dataHistory);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.currentStateTxtBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.AzTxtBox);
             this.Controls.Add(this.AxTxtBox);
@@ -174,7 +174,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox AxTxtBox;
         private System.Windows.Forms.TextBox AzTxtBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox currentStateTxtBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox dataHistory;
         private System.Windows.Forms.Timer timer1;
