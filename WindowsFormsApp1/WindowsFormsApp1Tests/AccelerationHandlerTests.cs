@@ -10,10 +10,24 @@ namespace WindowsFormsApp1.Tests
     public class AccelerationHandlerTests
     {
         [TestMethod()]
-        public void getOrientationDisplayedTest()
+        public void getNextStateTest_forwardPunchReturned()
         {
             Assert.Fail();
         }
+
+        [TestMethod()]
+        public void getNextStateTest_upperCutReturned()
+        {
+            Assert.Fail();
+        }
+
+
+        [TestMethod()]
+        public void getNextStateTest_righthookReturned()
+        {
+            Assert.Fail();
+        }
+
 
         [TestMethod()]
         public void writeAccelerationToFileTest()
