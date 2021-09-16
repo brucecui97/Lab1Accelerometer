@@ -8,13 +8,6 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    enum AccelerationAxis
-    {
-        Ax,
-        Ay,
-        Az,
-        Unknown,
-    }
     public partial class Form1 : Form
     {
         SerialPort serialPort1 = new SerialPort("portNameNotSet", 9600, Parity.None, 8, StopBits.One);
