@@ -33,7 +33,7 @@ namespace WindowsFormsApp1
                 int newByte = serialPort1.ReadByte();
                 AssignToAccelerationAxis(newByte);
                 ThreadHelperClass.SetText(this, orientationTxtBox, AccelerationHandler.getOrientationDisplayed(acceleration));
-                //writeAccelerationToFile();
+                AccelerationHandler.writeAccelerationToFile(acceleration);
                 dataQueue.Enqueue(newByte);
                 serialDataString = serialDataString + "," + newByte.ToString();
                 bytesToRead = serialPort1.BytesToRead;
@@ -111,18 +111,7 @@ namespace WindowsFormsApp1
                 nextAccelerationAxis = AccelerationAxis.Unknown;
             }
         }
-        private void writeAccelerationToFile()
-        {
-            // Set a variable to the Documents path.
-            string docPath = System.AppContext.BaseDirectory;
-
-            // Write the string array to a new file named "WriteLines.txt".
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "WriteLines.csv"), append: true))
-            {
-                DateTime timeNow = DateTime.Now;
-                outputFile.WriteLine(acceleration.ToString() + "," + "readable: " + timeNow.ToString("MM/dd/yyyy HH:mm:ss.fff"));
-            }
-        }
+        
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
