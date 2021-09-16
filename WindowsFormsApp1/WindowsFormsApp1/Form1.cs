@@ -15,7 +15,6 @@ namespace WindowsFormsApp1
         AccelerationAxis nextAccelerationAxis = AccelerationAxis.Unknown;
         Acceleration acceleration = new Acceleration();
         String serialDataString = "";
-        private static readonly int NEUTRAL_ACCELERATION_VAL = 126;
 
         public Form1()
         {
@@ -115,30 +114,7 @@ namespace WindowsFormsApp1
 
         private void updateOrientationDisplayed()
         {
-            int AxDiffWithNeutral = acceleration.AxValue - NEUTRAL_ACCELERATION_VAL;
-            int AyDiffWithNeutral = acceleration.AyValue - NEUTRAL_ACCELERATION_VAL;
-            int AzDiffWIthNeutral = acceleration.AzValue - NEUTRAL_ACCELERATION_VAL;
-
-            var diffs = new List<int> {
-                Math.Abs(AxDiffWithNeutral),
-                Math.Abs(AyDiffWithNeutral),
-                Math.Abs(AzDiffWIthNeutral) };
-
-            String orientationTxtBoxRes;
-            if (Math.Abs(AxDiffWithNeutral) == diffs.Max())
-            {
-                orientationTxtBoxRes = Math.Sign(AxDiffWithNeutral).ToString() + "X";
-            }
-            else if (Math.Abs(AyDiffWithNeutral) == diffs.Max())
-            {
-                orientationTxtBoxRes = Math.Sign(AyDiffWithNeutral).ToString() + "Y";
-            }
-            else
-            {
-                orientationTxtBoxRes = Math.Sign(AzDiffWIthNeutral).ToString() + "Z";
-            }
-
-            ThreadHelperClass.SetText(this, orientationTxtBox, orientationTxtBoxRes);
+            ThreadHelperClass.SetText(this, orientationTxtBox, AccelerationHandler.getOrientationDisplayed(acceleration));
         }
 
         private void writeAccelerationToFile()
