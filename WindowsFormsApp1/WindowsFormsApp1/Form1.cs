@@ -27,8 +27,27 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            serialPort1.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
         }
 
+        private void DataReceivedHandler(
+                    object sender,
+                    SerialDataReceivedEventArgs e)
+        {
+            int bytesToRead = serialPort1.BytesToRead;
+            while (bytesToRead != 0)
+            {
+                ThreadHelperClass.SetText(this, serialBytesToReadTxtBox, serialPort1.BytesToRead.ToString());
+                int newByte = serialPort1.ReadByte();
+                //AssignToAccelerationAxis(newByte);
+                //updateOrientationDisplayed();
+                //writeAccelerationToFile();
+                dataQueue.Enqueue(newByte);
+                serialDataString = serialDataString + "," + newByte.ToString();
+                bytesToRead = serialPort1.BytesToRead;
+            }
+
+        }
         private void doWhenLoadForm(object sender, EventArgs e)
         {
             comboBoxCOMPorts.Items.Clear();
@@ -56,23 +75,7 @@ namespace WindowsFormsApp1
             debugTxtBox.AppendText("triggered Timer event");
             if (serialPort1.IsOpen)
             {
-                int bytesToRead = serialPort1.BytesToRead;
-                while (bytesToRead != 0)
-                {
-                    serialBytesToReadTxtBox.Text = serialPort1.BytesToRead.ToString();
-
-                    int newByte = serialPort1.ReadByte();
-                    AssignToAccelerationAxis(newByte);
-                    updateOrientationDisplayed();
-                    writeAccelerationToFile();
-                    dataQueue.Enqueue(newByte);
-                    serialDataString = serialDataString + "," + newByte.ToString();
-
-                    bytesToRead = serialPort1.BytesToRead;
-                }
-
                 serialBytesToReadTxtBox.Text = serialPort1.BytesToRead.ToString();
-                tempStringLenTxtBox.Text = serialDataString.Length.ToString();
                 itemsInQueueTxtBox.Text = dataQueue.Count.ToString();
                 while (!dataQueue.IsEmpty)
                 {
@@ -81,6 +84,7 @@ namespace WindowsFormsApp1
                         serialDataStringTxtBox.AppendText(dequeueResult.ToString() + ",");
                     }
                 }
+                tempStringLenTxtBox.Text = serialDataString.Length.ToString();
                 serialDataString = "";
             }
         }
