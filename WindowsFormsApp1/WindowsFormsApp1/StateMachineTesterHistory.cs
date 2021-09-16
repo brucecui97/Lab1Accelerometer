@@ -7,14 +7,14 @@ namespace WindowsFormsApp1
     class StateMachineTesterHistory
     {
         public Acceleration acceleration;
-        public int previousState;
+        public GestureState previousState;
 
         public override string ToString()
         {
             return "(" + acceleration.ToString() + "," + previousState.ToString() + ")";
         }
 
-        public StateMachineTesterHistory(Acceleration acceleration, int previousState) {
+        public StateMachineTesterHistory(Acceleration acceleration, GestureState previousState) {
             this.acceleration = acceleration;
             this.previousState = previousState;
         }

@@ -28,9 +28,7 @@ namespace WindowsFormsApp1
                Int32.Parse(AyTxtBox.Text),
                Int32.Parse(AzTxtBox.Text));
 
-            Random rnd = new Random();
-            int nextState = rnd.Next(1, 7);
-            stateMachineTesterHistories.Add(new StateMachineTesterHistory(acceleration, nextState));
+            stateMachineTesterHistories.Add(new StateMachineTesterHistory(acceleration, AccelerationHandler.getGestureState(acceleration)));
         }
 
         private void timer_tick(object sender, EventArgs e)
