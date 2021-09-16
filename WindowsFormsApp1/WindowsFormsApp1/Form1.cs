@@ -39,8 +39,8 @@ namespace WindowsFormsApp1
             {
                 ThreadHelperClass.SetText(this, serialBytesToReadTxtBox, serialPort1.BytesToRead.ToString());
                 int newByte = serialPort1.ReadByte();
-                //AssignToAccelerationAxis(newByte);
-                //updateOrientationDisplayed();
+                AssignToAccelerationAxis(newByte);
+                updateOrientationDisplayed();
                 //writeAccelerationToFile();
                 dataQueue.Enqueue(newByte);
                 serialDataString = serialDataString + "," + newByte.ToString();
@@ -101,21 +101,21 @@ namespace WindowsFormsApp1
             else if (nextAccelerationAxis == AccelerationAxis.Ax)
             {
                 acceleration.AxValue = newByte;
-                AxTxtBox.Text = acceleration.AxValue.ToString();
+                ThreadHelperClass.SetText(this, AxTxtBox, acceleration.AxValue.ToString());
                 nextAccelerationAxis = AccelerationAxis.Ay;
             }
 
             else if (nextAccelerationAxis == AccelerationAxis.Ay)
             {
                 acceleration.AyValue = newByte;
-                AyTxtBox.Text = acceleration.AyValue.ToString();
+                ThreadHelperClass.SetText(this, AyTxtBox, acceleration.AyValue.ToString());
                 nextAccelerationAxis = AccelerationAxis.Az;
             }
 
             else if (nextAccelerationAxis == AccelerationAxis.Az)
             {
                 acceleration.AzValue = newByte;
-                AzTxtBox.Text = acceleration.AzValue.ToString();
+                ThreadHelperClass.SetText(this, AzTxtBox, acceleration.AzValue.ToString());
                 nextAccelerationAxis = AccelerationAxis.Unknown;
             }
         }
@@ -131,18 +131,21 @@ namespace WindowsFormsApp1
                 Math.Abs(AyDiffWithNeutral),
                 Math.Abs(AzDiffWIthNeutral) };
 
+            String orientationTxtBoxRes;
             if (Math.Abs(AxDiffWithNeutral) == diffs.Max())
             {
-                orientationTxtBox.Text = Math.Sign(AxDiffWithNeutral).ToString() + "X";
+                orientationTxtBoxRes = Math.Sign(AxDiffWithNeutral).ToString() + "X";
             }
             else if (Math.Abs(AyDiffWithNeutral) == diffs.Max())
             {
-                orientationTxtBox.Text = Math.Sign(AyDiffWithNeutral).ToString() + "Y";
+                orientationTxtBoxRes = Math.Sign(AyDiffWithNeutral).ToString() + "Y";
             }
             else
             {
-                orientationTxtBox.Text = Math.Sign(AzDiffWIthNeutral).ToString() + "Z";
+                orientationTxtBoxRes = Math.Sign(AzDiffWIthNeutral).ToString() + "Z";
             }
+
+            ThreadHelperClass.SetText(this, orientationTxtBox, orientationTxtBoxRes);
         }
 
         private void writeAccelerationToFile()
