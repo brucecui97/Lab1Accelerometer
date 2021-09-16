@@ -6,7 +6,7 @@ using System.Text;
 
 namespace WindowsFormsApp1
 {
-    class AccelerationHandler
+    public class AccelerationHandler
     {
         private static readonly int NEUTRAL_ACCELERATION_VAL = 126;
 

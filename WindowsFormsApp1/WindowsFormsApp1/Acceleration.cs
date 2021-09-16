@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WindowsFormsApp1
 {
-    class Acceleration
+    public class Acceleration
     {   
         public int AxValue = 0;
         public int AyValue = 0;
