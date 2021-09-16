@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Ay = new System.Windows.Forms.Label();
             this.ProcessNewDataPoint = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,7 +40,8 @@ namespace WindowsFormsApp1
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.dataHistory = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // Ay
@@ -125,20 +127,25 @@ namespace WindowsFormsApp1
             this.label4.TabIndex = 11;
             this.label4.Text = "Data History";
             // 
-            // textBox5
+            // dataHistory
             // 
-            this.textBox5.Location = new System.Drawing.Point(27, 244);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(365, 194);
-            this.textBox5.TabIndex = 12;
+            this.dataHistory.Location = new System.Drawing.Point(27, 244);
+            this.dataHistory.Multiline = true;
+            this.dataHistory.Name = "dataHistory";
+            this.dataHistory.Size = new System.Drawing.Size(365, 194);
+            this.dataHistory.TabIndex = 12;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer_tick);
             // 
             // StateMachineTester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.dataHistory);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
@@ -169,6 +176,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox dataHistory;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -13,6 +13,11 @@ namespace WindowsFormsApp1
         {
             return "(" + acceleration.ToString() + "," + previousState.ToString() + ")";
         }
+
+        public StateMachineTesterHistory(Acceleration acceleration, int previousState) {
+            this.acceleration = acceleration;
+            this.previousState = previousState;
+        }
     }
 
  

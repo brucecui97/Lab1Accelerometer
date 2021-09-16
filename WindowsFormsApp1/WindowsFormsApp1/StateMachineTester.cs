@@ -10,7 +10,8 @@ namespace WindowsFormsApp1
 {
     public partial class StateMachineTester : Form
     {
-        Acceleration acceleration;
+        Acceleration acceleration = new Acceleration();
+        List<StateMachineTesterHistory> stateMachineTesterHistories = new List<StateMachineTesterHistory>();
         public StateMachineTester()
         {
             InitializeComponent();
@@ -26,6 +27,19 @@ namespace WindowsFormsApp1
             acceleration = new Acceleration(Int32.Parse(AxTxtBox.Text),
                Int32.Parse(AyTxtBox.Text),
                Int32.Parse(AzTxtBox.Text));
+
+            Random rnd = new Random();
+            int nextState = rnd.Next(1, 7);
+            stateMachineTesterHistories.Add(new StateMachineTesterHistory(acceleration, nextState));
+        }
+
+        private void timer_tick(object sender, EventArgs e)
+        {
+            dataHistory.Clear();
+            foreach (StateMachineTesterHistory stateMachineTesterHistory in stateMachineTesterHistories) {
+                dataHistory.AppendText(stateMachineTesterHistory.ToString());
+            }
+            
         }
     }
 }
