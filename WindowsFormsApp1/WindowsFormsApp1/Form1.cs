@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
                 ThreadHelperClass.SetText(this, serialBytesToReadTxtBox, serialPort1.BytesToRead.ToString());
                 int newByte = serialPort1.ReadByte();
                 AssignToAccelerationAxis(newByte);
-                updateOrientationDisplayed();
+                ThreadHelperClass.SetText(this, orientationTxtBox, AccelerationHandler.getOrientationDisplayed(acceleration));
                 //writeAccelerationToFile();
                 dataQueue.Enqueue(newByte);
                 serialDataString = serialDataString + "," + newByte.ToString();
@@ -111,12 +111,6 @@ namespace WindowsFormsApp1
                 nextAccelerationAxis = AccelerationAxis.Unknown;
             }
         }
-
-        private void updateOrientationDisplayed()
-        {
-            ThreadHelperClass.SetText(this, orientationTxtBox, AccelerationHandler.getOrientationDisplayed(acceleration));
-        }
-
         private void writeAccelerationToFile()
         {
             // Set a variable to the Documents path.
