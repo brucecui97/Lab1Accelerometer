@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WindowsFormsApp1
 {
-    public enum GestureStates
+    public enum GestureState
     {
         SimplePunchX,
         HighPunchZX,

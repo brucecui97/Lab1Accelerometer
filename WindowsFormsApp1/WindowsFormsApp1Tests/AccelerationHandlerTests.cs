@@ -10,29 +10,24 @@ namespace WindowsFormsApp1.Tests
     public class AccelerationHandlerTests
     {
         [TestMethod()]
-        public void getNextStateTest_forwardPunchReturned()
+        public void getGesture_forwardPunchReturned()
         {
-            Assert.Fail();
+            Assert.AreEqual(GestureState.SimplePunchX, AccelerationHandler.getGestureState(new Acceleration(200, 125, 125)));
         }
 
         [TestMethod()]
-        public void getNextStateTest_upperCutReturned()
+        public void getGesture_upperCutReturned()
         {
-            Assert.Fail();
-        }
+            Assert.AreEqual(GestureState.HighPunchZX, AccelerationHandler.getGestureState(new Acceleration(200, 125, 200)));
 
-
-        [TestMethod()]
-        public void getNextStateTest_righthookReturned()
-        {
-            Assert.Fail();
         }
 
 
         [TestMethod()]
-        public void writeAccelerationToFileTest()
+        public void getGesture_righthookReturned()
         {
-            Assert.Fail();
+
+            Assert.AreEqual(GestureState.RightHookXYZ, AccelerationHandler.getGestureState(new Acceleration(200, 200, 200)));
         }
     }
 }

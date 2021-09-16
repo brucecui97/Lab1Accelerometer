@@ -46,5 +46,23 @@ namespace WindowsFormsApp1
                 outputFile.WriteLine(timeNow.Ticks / TimeSpan.TicksPerMillisecond + "," + acceleration.ToString());
             }
         }
+
+        public static GestureState getGestureState(Acceleration acceleration) {
+            int threshHold = 190;
+
+            if (acceleration.AxValue > threshHold && acceleration.AyValue > threshHold && acceleration.AzValue > threshHold) {
+                return GestureState.RightHookXYZ;
+            }
+            else if (acceleration.AxValue > threshHold && acceleration.AzValue > threshHold)
+            {
+                return GestureState.HighPunchZX;
+            }
+            else if (acceleration.AxValue > 190)
+            {
+                return GestureState.SimplePunchX;
+            }
+
+            return GestureState.Waiting;
+        }
     }
 }
