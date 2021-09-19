@@ -9,6 +9,8 @@ namespace WindowsFormsApp1
     public class AccelerationHandler
     {
         private static readonly int NEUTRAL_ACCELERATION_VAL = 126;
+        private static readonly String SAVE_ACCELERATION_FILE_PATH =
+            Path.Combine("C:\\Users\\brucecui\\OneDrive\\School\\UBC\\mechFinalYear\\mech423", "unused.csv");
 
         public static String getOrientationDisplayed(Acceleration acceleration) {
             int AxDiffWithNeutral = acceleration.AxValue - NEUTRAL_ACCELERATION_VAL;
@@ -40,7 +42,7 @@ namespace WindowsFormsApp1
             string docPath = System.AppContext.BaseDirectory;
 
             // Write the string array to a new file named "WriteLines.txt".
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "WriteLines.csv"), append: true))
+            using (StreamWriter outputFile = new StreamWriter(SAVE_ACCELERATION_FILE_PATH, append: true))
             {
                 DateTime timeNow = DateTime.Now;
                 outputFile.WriteLine(timeNow.Ticks / TimeSpan.TicksPerMillisecond + "," + acceleration.ToString());
