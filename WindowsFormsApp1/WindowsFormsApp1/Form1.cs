@@ -33,7 +33,7 @@ namespace WindowsFormsApp1
                 int newByte = serialPort1.ReadByte();
                 AssignToAccelerationAxis(newByte);
                 ThreadHelperClass.SetText(this, orientationTxtBox, AccelerationHandler.getOrientationDisplayed(acceleration));
-                AccelerationHandler.writeAccelerationToFile(acceleration);
+                AccelerationHandler.writeAccelerationToFile(acceleration, selectFileNameTxtBox.Text);
                 dataQueue.Enqueue(newByte);
                 serialDataString = serialDataString + "," + newByte.ToString();
                 bytesToRead = serialPort1.BytesToRead;
@@ -137,7 +137,6 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Stream myStream;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
@@ -146,13 +145,7 @@ namespace WindowsFormsApp1
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                debugTxtBox.AppendText(saveFileDialog1.FileName);
-                
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
-                {
-                    // Code to write the stream goes here.
-                    myStream.Close();
-                }
+                selectFileNameTxtBox.Text = saveFileDialog1.FileName;
             }
         }
     }

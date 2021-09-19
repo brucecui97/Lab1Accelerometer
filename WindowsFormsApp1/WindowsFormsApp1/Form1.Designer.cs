@@ -50,7 +50,8 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.orientationTxtBox = new System.Windows.Forms.TextBox();
             this.closePortButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.selectFileNameButton = new System.Windows.Forms.Button();
+            this.selectFileNameTxtBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -232,22 +233,30 @@
             this.closePortButton.UseVisualStyleBackColor = true;
             this.closePortButton.Click += new System.EventHandler(this.closePortClick);
             // 
-            // button1
+            // selectFileNameButton
             // 
-            this.button1.Location = new System.Drawing.Point(488, 475);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.selectFileNameButton.Location = new System.Drawing.Point(488, 475);
+            this.selectFileNameButton.Name = "selectFileNameButton";
+            this.selectFileNameButton.Size = new System.Drawing.Size(94, 29);
+            this.selectFileNameButton.TabIndex = 5;
+            this.selectFileNameButton.Text = "selectFileName";
+            this.selectFileNameButton.UseVisualStyleBackColor = true;
+            this.selectFileNameButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // selectFileNameTxtBox
+            // 
+            this.selectFileNameTxtBox.Location = new System.Drawing.Point(598, 477);
+            this.selectFileNameTxtBox.Name = "selectFileNameTxtBox";
+            this.selectFileNameTxtBox.Size = new System.Drawing.Size(312, 27);
+            this.selectFileNameTxtBox.TabIndex = 6;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 568);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.selectFileNameTxtBox);
+            this.Controls.Add(this.selectFileNameButton);
             this.Controls.Add(this.closePortButton);
             this.Controls.Add(this.orientationTxtBox);
             this.Controls.Add(this.AyTxtBox);
@@ -300,7 +309,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TextBox orientationTxtBox;
         private System.Windows.Forms.Button closePortButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button selectFileNameButton;
+        private System.Windows.Forms.TextBox selectFileNameTxtBox;
     }
 }
 
