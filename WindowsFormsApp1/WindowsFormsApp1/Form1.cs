@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
         AccelerationAxis nextAccelerationAxis = AccelerationAxis.Unknown;
         Acceleration acceleration = new Acceleration();
+        FixedSizedQueue<Acceleration> accelerationsHistory = new FixedSizedQueue<Acceleration>(50);
         String serialDataString = "";
 
         public Form1()
@@ -35,6 +36,14 @@ namespace WindowsFormsApp1
                 ThreadHelperClass.SetText(this, orientationTxtBox, AccelerationHandler.getOrientationDisplayed(acceleration));
                 AccelerationHandler.writeAccelerationToFile(acceleration, selectFileNameTxtBox.Text);
                 dataQueue.Enqueue(newByte);
+
+                accelerationsHistory.Enqueue(acceleration);
+                if (AccelerationHandler.getGestureStateQueue(accelerationsHistory) != GestureState.Waiting) {
+                    MessageBox.Show(AccelerationHandler.getGestureStateQueue(accelerationsHistory).ToString());
+                    serialPort1.DiscardInBuffer();
+                    serialPort1.DiscardOutBuffer();
+                    accelerationsHistory.Clear();
+                }
                 serialDataString = serialDataString + "," + newByte.ToString();
                 bytesToRead = serialPort1.BytesToRead;
             }
