@@ -16,6 +16,12 @@ namespace WindowsFormsApp1
             this.AzValue = AzValue;
         }
 
+        public Acceleration(Acceleration previousAccleration) {
+            this.AxValue = previousAccleration.AxValue;
+            this.AyValue = previousAccleration.AyValue;
+            this.AzValue = previousAccleration.AzValue;
+        }
+
         public Acceleration() { 
         }
         public override string ToString() {

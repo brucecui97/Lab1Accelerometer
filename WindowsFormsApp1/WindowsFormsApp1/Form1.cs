@@ -37,14 +37,14 @@ namespace WindowsFormsApp1
                 AccelerationHandler.writeAccelerationToFile(acceleration, selectFileNameTxtBox.Text);
                 dataQueue.Enqueue(newByte);
 
-                accelerationsHistory.Enqueue(acceleration);
-                //if (AccelerationHandler.getGestureStateQueue(accelerationsHistory) != GestureState.Waiting)
-                //{
-                //    MessageBox.Show(AccelerationHandler.getGestureStateQueue(accelerationsHistory).ToString());
-                //    serialPort1.DiscardInBuffer();
-                //    serialPort1.DiscardOutBuffer();
-                //    accelerationsHistory.Clear();
-                //}
+                accelerationsHistory.Enqueue(new Acceleration(acceleration));
+                if (AccelerationHandler.getGestureStateQueue(accelerationsHistory) != GestureState.Waiting)
+                {
+                    MessageBox.Show(AccelerationHandler.getGestureStateQueue(accelerationsHistory).ToString());
+                    serialPort1.DiscardInBuffer();
+                    serialPort1.DiscardOutBuffer();
+                    accelerationsHistory.Clear();
+                }
                 serialDataString = serialDataString + "," + newByte.ToString();
                 bytesToRead = serialPort1.BytesToRead;
             }
