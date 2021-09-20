@@ -10,5 +10,11 @@ namespace WindowsFormsApp1
         HighPunchZX,
         RightHookXYZ,
         Waiting,
+        X,
+        XY,
+        XYZ,
+        Z,
+        ZX,
+        Null,
     }
 }

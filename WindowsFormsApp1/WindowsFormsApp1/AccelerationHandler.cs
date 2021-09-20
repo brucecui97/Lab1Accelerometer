@@ -58,7 +58,7 @@ namespace WindowsFormsApp1
             int maxAx = 0;
             int maxAy = 0;
             int maxAz = 0;
-            int num_points_to_expand = 10;
+            int num_points_to_expand = 20;
             int x_exceed_threshold = 170;
             int y_exceed_threshold = 152;
             int z_exceed_threshold = 190;
@@ -104,24 +104,47 @@ namespace WindowsFormsApp1
             }
         }
 
-        public static GestureState getGestureState(Acceleration acceleration)
+        public static GestureState getGestureState(Acceleration acceleration, GestureState currentState)
         {
             int threshHold = 190;
 
-            if (acceleration.AxValue > threshHold && acceleration.AyValue > threshHold && acceleration.AzValue > threshHold)
+            if (currentState == GestureState.Null)
             {
-                return GestureState.RightHookXYZ;
-            }
-            else if (acceleration.AxValue > threshHold && acceleration.AzValue > threshHold)
-            {
-                return GestureState.HighPunchZX;
-            }
-            else if (acceleration.AxValue > 190)
-            {
-                return GestureState.SimplePunchX;
+                if (acceleration.AxValue > threshHold)
+                {
+                    return GestureState.X;
+                }
+                else if (acceleration.AzValue > threshHold)
+                {
+                    return GestureState.Z;
+                }
             }
 
-            return GestureState.Waiting;
+            else if (currentState == GestureState.X)
+            {
+                if (acceleration.AyValue > threshHold)
+                {
+                    return GestureState.XY;
+                }
+            }
+
+            else if (currentState == GestureState.XY)
+            {
+                if (acceleration.AzValue > threshHold)
+                {
+                    return GestureState.XYZ;
+                }
+            }
+
+            else if (currentState == GestureState.Z)
+            {
+                if (acceleration.AxValue > threshHold)
+                {
+                    return GestureState.ZX;
+                }
+            }
+
+            return GestureState.Null;
         }
     }
 }
