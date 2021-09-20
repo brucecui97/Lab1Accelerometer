@@ -10,11 +10,17 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        private static readonly int NUM_ACCELERATION_HISTORY_TO_AVERAGE = 100;
         SerialPort serialPort1 = new SerialPort("portNameNotSet", 9600, Parity.None, 8, StopBits.One);
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
         AccelerationAxis nextAccelerationAxis = AccelerationAxis.Unknown;
         Acceleration acceleration = new Acceleration();
         FixedSizedQueue<Acceleration> accelerationsHistory = new FixedSizedQueue<Acceleration>(50);
+        FixedSizedQueue<int> xAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);
+        FixedSizedQueue<int> yAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);
+        FixedSizedQueue<int> zAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);
+
+
         String serialDataString = "";
 
         public Form1()
@@ -38,6 +44,9 @@ namespace WindowsFormsApp1
                 dataQueue.Enqueue(newByte);
 
                 accelerationsHistory.Enqueue(new Acceleration(acceleration));
+                xAccelerationHistory.Enqueue(acceleration.AxValue);
+                yAccelerationHistory.Enqueue(acceleration.AyValue);
+                zAccelerationHistory.Enqueue(acceleration.AzValue);
                 if (AccelerationHandler.getGestureStateQueue(accelerationsHistory) != GestureState.Waiting)
                 {
                     MessageBox.Show(AccelerationHandler.getGestureStateQueue(accelerationsHistory).ToString());

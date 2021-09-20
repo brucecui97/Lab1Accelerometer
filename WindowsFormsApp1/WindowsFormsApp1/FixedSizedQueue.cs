@@ -5,6 +5,7 @@ using System.Text;
 
 namespace WindowsFormsApp1
 {
+    //implementation taken from: https://stackoverflow.com/a/5852926
     public class FixedSizedQueue<T> : ConcurrentQueue<T>
     {
         private readonly object syncObject = new object();
