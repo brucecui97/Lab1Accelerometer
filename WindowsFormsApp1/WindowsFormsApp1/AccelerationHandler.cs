@@ -58,10 +58,13 @@ namespace WindowsFormsApp1
             int maxAx = 0;
             int maxAy = 0;
             int maxAz = 0;
-            int num_points_to_expand = 5;
-            int exceed_threshold = 180;
+            int num_points_to_expand = 10;
+            int x_exceed_threshold = 170;
+            int y_exceed_threshold = 152;
+            int z_exceed_threshold = 190;
+
             List<Acceleration> accelerations = accelerationsQueue.ToList();
-            int firstIndexXExceed = accelerations.FindIndex(a => a.AxValue >= 150);
+            int firstIndexXExceed = accelerations.FindIndex(a => a.AxValue >= x_exceed_threshold);
             if (firstIndexXExceed == -1)
             {
                 return GestureState.Waiting;
@@ -83,15 +86,15 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (maxAx > exceed_threshold && maxAy > exceed_threshold && maxAz > exceed_threshold)
+            if (maxAx > x_exceed_threshold && maxAy > y_exceed_threshold && maxAz > z_exceed_threshold)
             {
                 return GestureState.RightHookXYZ;
             }
-            else if (maxAx > exceed_threshold && maxAz > exceed_threshold)
+            else if (maxAx > x_exceed_threshold && maxAz > z_exceed_threshold)
             {
                 return GestureState.HighPunchZX;
             }
-            else if (maxAx > exceed_threshold)
+            else if (maxAx > x_exceed_threshold)
             {
                 return GestureState.SimplePunchX;
             }
@@ -99,7 +102,6 @@ namespace WindowsFormsApp1
             {
                 return GestureState.Waiting;
             }
-
         }
 
         public static GestureState getGestureState(Acceleration acceleration)
