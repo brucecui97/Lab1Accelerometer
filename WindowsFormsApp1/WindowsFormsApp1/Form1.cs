@@ -43,10 +43,12 @@ namespace WindowsFormsApp1
                 AccelerationHandler.writeAccelerationToFile(acceleration, selectFileNameTxtBox.Text);
                 dataQueue.Enqueue(newByte);
 
-                accelerationsHistory.Enqueue(new Acceleration(acceleration));
                 xAccelerationHistory.Enqueue(acceleration.AxValue);
                 yAccelerationHistory.Enqueue(acceleration.AyValue);
                 zAccelerationHistory.Enqueue(acceleration.AzValue);
+                displayAvgAcc(xAccelerationHistory, yAccelerationHistory, zAccelerationHistory);
+
+                accelerationsHistory.Enqueue(new Acceleration(acceleration));
                 if (AccelerationHandler.getGestureStateQueue(accelerationsHistory) != GestureState.Waiting)
                 {
                     MessageBox.Show(AccelerationHandler.getGestureStateQueue(accelerationsHistory).ToString());
@@ -131,6 +133,22 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void displayAvgAcc(FixedSizedQueue<int> xAccelerations, FixedSizedQueue<int> yAccelerations, FixedSizedQueue<int> zAccelerations) {
+            if (xAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_AVERAGE) {
+                ThreadHelperClass.SetText(this, AxAvgTxtBox, xAccelerationHistory.ToList().Average().ToString());
+            }
+
+            if (yAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_AVERAGE)
+            {
+                ThreadHelperClass.SetText(this, AyAvgTxtBox, yAccelerationHistory.ToList().Average().ToString());
+            }
+
+            if (zAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_AVERAGE)
+            {
+                ThreadHelperClass.SetText(this, AzAvgTxtBox, zAccelerationHistory.ToList().Average().ToString());
+            }
+        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -166,6 +184,11 @@ namespace WindowsFormsApp1
             {
                 selectFileNameTxtBox.Text = saveFileDialog1.FileName;
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

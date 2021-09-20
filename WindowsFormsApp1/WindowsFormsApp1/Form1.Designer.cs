@@ -52,12 +52,16 @@
             this.closePortButton = new System.Windows.Forms.Button();
             this.selectFileNameButton = new System.Windows.Forms.Button();
             this.selectFileNameTxtBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.AxAvgTxtBox = new System.Windows.Forms.TextBox();
+            this.AyAvgTxtBox = new System.Windows.Forms.TextBox();
+            this.AzAvgTxtBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 95);
+            this.label1.Location = new System.Drawing.Point(26, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(135, 20);
             this.label1.TabIndex = 0;
@@ -66,7 +70,7 @@
             // 
             // itemsInQueueTxtBox
             // 
-            this.itemsInQueueTxtBox.Location = new System.Drawing.Point(171, 172);
+            this.itemsInQueueTxtBox.Location = new System.Drawing.Point(171, 136);
             this.itemsInQueueTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.itemsInQueueTxtBox.Name = "itemsInQueueTxtBox";
             this.itemsInQueueTxtBox.Size = new System.Drawing.Size(114, 27);
@@ -86,7 +90,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 133);
+            this.label2.Location = new System.Drawing.Point(26, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(131, 20);
             this.label2.TabIndex = 0;
@@ -95,7 +99,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 169);
+            this.label3.Location = new System.Drawing.Point(26, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 20);
             this.label3.TabIndex = 0;
@@ -103,7 +107,7 @@
             // 
             // tempStringLenTxtBox
             // 
-            this.tempStringLenTxtBox.Location = new System.Drawing.Point(171, 133);
+            this.tempStringLenTxtBox.Location = new System.Drawing.Point(171, 97);
             this.tempStringLenTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tempStringLenTxtBox.Name = "tempStringLenTxtBox";
             this.tempStringLenTxtBox.Size = new System.Drawing.Size(114, 27);
@@ -111,7 +115,7 @@
             // 
             // serialBytesToReadTxtBox
             // 
-            this.serialBytesToReadTxtBox.Location = new System.Drawing.Point(171, 95);
+            this.serialBytesToReadTxtBox.Location = new System.Drawing.Point(171, 59);
             this.serialBytesToReadTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.serialBytesToReadTxtBox.Name = "serialBytesToReadTxtBox";
             this.serialBytesToReadTxtBox.Size = new System.Drawing.Size(114, 27);
@@ -120,7 +124,7 @@
             // serialDataStringLabel
             // 
             this.serialDataStringLabel.AutoSize = true;
-            this.serialDataStringLabel.Location = new System.Drawing.Point(13, 236);
+            this.serialDataStringLabel.Location = new System.Drawing.Point(26, 175);
             this.serialDataStringLabel.Name = "serialDataStringLabel";
             this.serialDataStringLabel.Size = new System.Drawing.Size(151, 20);
             this.serialDataStringLabel.TabIndex = 0;
@@ -128,7 +132,7 @@
             // 
             // serialDataStringTxtBox
             // 
-            this.serialDataStringTxtBox.Location = new System.Drawing.Point(13, 260);
+            this.serialDataStringTxtBox.Location = new System.Drawing.Point(26, 199);
             this.serialDataStringTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.serialDataStringTxtBox.Multiline = true;
             this.serialDataStringTxtBox.Name = "serialDataStringTxtBox";
@@ -160,7 +164,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(329, 530);
+            this.label4.Location = new System.Drawing.Point(201, 474);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 20);
             this.label4.TabIndex = 0;
@@ -169,7 +173,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(171, 530);
+            this.label5.Location = new System.Drawing.Point(106, 475);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 20);
             this.label5.TabIndex = 0;
@@ -178,7 +182,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(26, 530);
+            this.label6.Location = new System.Drawing.Point(12, 473);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(26, 20);
             this.label6.TabIndex = 0;
@@ -186,7 +190,7 @@
             // 
             // AxTxtBox
             // 
-            this.AxTxtBox.Location = new System.Drawing.Point(58, 528);
+            this.AxTxtBox.Location = new System.Drawing.Point(44, 471);
             this.AxTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AxTxtBox.Name = "AxTxtBox";
             this.AxTxtBox.Size = new System.Drawing.Size(57, 27);
@@ -194,7 +198,7 @@
             // 
             // AzTxtBox
             // 
-            this.AzTxtBox.Location = new System.Drawing.Point(361, 523);
+            this.AzTxtBox.Location = new System.Drawing.Point(233, 472);
             this.AzTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AzTxtBox.Name = "AzTxtBox";
             this.AzTxtBox.Size = new System.Drawing.Size(57, 27);
@@ -202,7 +206,7 @@
             // 
             // AyTxtBox
             // 
-            this.AyTxtBox.Location = new System.Drawing.Point(228, 523);
+            this.AyTxtBox.Location = new System.Drawing.Point(138, 470);
             this.AyTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AyTxtBox.Name = "AyTxtBox";
             this.AyTxtBox.Size = new System.Drawing.Size(57, 27);
@@ -250,11 +254,46 @@
             this.selectFileNameTxtBox.Size = new System.Drawing.Size(312, 27);
             this.selectFileNameTxtBox.TabIndex = 6;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 513);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 20);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Avg";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // AxAvgTxtBox
+            // 
+            this.AxAvgTxtBox.Location = new System.Drawing.Point(44, 513);
+            this.AxAvgTxtBox.Name = "AxAvgTxtBox";
+            this.AxAvgTxtBox.Size = new System.Drawing.Size(57, 27);
+            this.AxAvgTxtBox.TabIndex = 8;
+            // 
+            // AyAvgTxtBox
+            // 
+            this.AyAvgTxtBox.Location = new System.Drawing.Point(138, 513);
+            this.AyAvgTxtBox.Name = "AyAvgTxtBox";
+            this.AyAvgTxtBox.Size = new System.Drawing.Size(57, 27);
+            this.AyAvgTxtBox.TabIndex = 9;
+            // 
+            // AzAvgTxtBox
+            // 
+            this.AzAvgTxtBox.Location = new System.Drawing.Point(233, 513);
+            this.AzAvgTxtBox.Name = "AzAvgTxtBox";
+            this.AzAvgTxtBox.Size = new System.Drawing.Size(57, 27);
+            this.AzAvgTxtBox.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 568);
+            this.Controls.Add(this.AzAvgTxtBox);
+            this.Controls.Add(this.AyAvgTxtBox);
+            this.Controls.Add(this.AxAvgTxtBox);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.selectFileNameTxtBox);
             this.Controls.Add(this.selectFileNameButton);
             this.Controls.Add(this.closePortButton);
@@ -311,6 +350,10 @@
         private System.Windows.Forms.Button closePortButton;
         private System.Windows.Forms.Button selectFileNameButton;
         private System.Windows.Forms.TextBox selectFileNameTxtBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox AxAvgTxtBox;
+        private System.Windows.Forms.TextBox AyAvgTxtBox;
+        private System.Windows.Forms.TextBox AzAvgTxtBox;
     }
 }
 
