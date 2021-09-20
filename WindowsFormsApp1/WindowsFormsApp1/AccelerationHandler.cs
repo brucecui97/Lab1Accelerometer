@@ -10,7 +10,8 @@ namespace WindowsFormsApp1
     {
         private static readonly int NEUTRAL_ACCELERATION_VAL = 126;
 
-        public static String getOrientationDisplayed(Acceleration acceleration) {
+        public static String getOrientationDisplayed(Acceleration acceleration)
+        {
             int AxDiffWithNeutral = acceleration.AxValue - NEUTRAL_ACCELERATION_VAL;
             int AyDiffWithNeutral = acceleration.AyValue - NEUTRAL_ACCELERATION_VAL;
             int AzDiffWIthNeutral = acceleration.AzValue - NEUTRAL_ACCELERATION_VAL;
@@ -48,10 +49,67 @@ namespace WindowsFormsApp1
             }
         }
 
-        public static GestureState getGestureState(Acceleration acceleration) {
+        public static GestureState getGestureStateQueue(FixedSizedQueue<Acceleration> accelerationsQueue)
+        {
+            if (accelerationsQueue.Count < accelerationsQueue.Size)
+            {
+                return GestureState.Waiting;
+            }
+            int maxAx = 0;
+            int maxAy = 0;
+            int maxAz = 0;
+            int num_points_to_expand = 5;
+            int exceed_threshold = 180;
+            List<Acceleration> accelerations = accelerationsQueue.ToList();
+
+            int firstIndexXExceed = accelerations.FindIndex(a => a.AxValue >= 180);
+            if (firstIndexXExceed == -1)
+            {
+                return GestureState.Waiting;
+            }
+
+            if (firstIndexXExceed + num_points_to_expand > accelerationsQueue.Size ||
+                firstIndexXExceed - num_points_to_expand < 0)
+            {
+                return GestureState.Waiting;
+            }
+
+            else
+            {
+                maxAx = accelerations[firstIndexXExceed].AxValue;
+                foreach (Acceleration acceleration in accelerations.Skip(firstIndexXExceed - num_points_to_expand).Take(2 * num_points_to_expand + 1))
+                {
+                    maxAy = Math.Max(maxAy, acceleration.AyValue);
+                    maxAz = Math.Max(maxAz, acceleration.AzValue);
+                }
+            }
+
+
+            if (maxAx > exceed_threshold && maxAy > exceed_threshold && maxAz > exceed_threshold)
+            {
+                return GestureState.RightHookXYZ;
+            }
+            else if (maxAx > exceed_threshold && maxAz > exceed_threshold)
+            {
+                return GestureState.HighPunchZX;
+            }
+            else if (maxAx > exceed_threshold)
+            {
+                return GestureState.SimplePunchX;
+            }
+            else
+            {
+                return GestureState.Waiting;
+            }
+
+        }
+
+        public static GestureState getGestureState(Acceleration acceleration)
+        {
             int threshHold = 190;
 
-            if (acceleration.AxValue > threshHold && acceleration.AyValue > threshHold && acceleration.AzValue > threshHold) {
+            if (acceleration.AxValue > threshHold && acceleration.AyValue > threshHold && acceleration.AzValue > threshHold)
+            {
                 return GestureState.RightHookXYZ;
             }
             else if (acceleration.AxValue > threshHold && acceleration.AzValue > threshHold)
