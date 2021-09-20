@@ -29,5 +29,24 @@ namespace WindowsFormsApp1.Tests
 
             Assert.AreEqual(GestureState.RightHookXYZ, AccelerationHandler.getGestureState(new Acceleration(200, 200, 200)));
         }
+
+        [TestMethod()]
+        public void getGesture()
+        {
+
+            FixedSizedQueue<Acceleration> accelerationsQueue = new FixedSizedQueue<Acceleration>(50);
+
+            for (int i = 0; i < 50; i++) {
+                accelerationsQueue.Enqueue(new Acceleration(126, 126, 126));
+            }
+
+            for (int i = 0; i < 30; i++)
+            {
+                accelerationsQueue.Enqueue(new Acceleration(200, 126, 126));
+            }
+            accelerationsQueue.Enqueue(new Acceleration(201, 126, 126));
+
+            Assert.AreEqual(AccelerationHandler.getGestureStateQueue(accelerationsQueue), GestureState.SimplePunchX);
+        }
     }
 }

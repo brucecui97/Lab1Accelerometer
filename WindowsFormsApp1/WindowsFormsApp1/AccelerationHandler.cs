@@ -61,8 +61,7 @@ namespace WindowsFormsApp1
             int num_points_to_expand = 5;
             int exceed_threshold = 180;
             List<Acceleration> accelerations = accelerationsQueue.ToList();
-
-            int firstIndexXExceed = accelerations.FindIndex(a => a.AxValue >= 180);
+            int firstIndexXExceed = accelerations.FindIndex(a => a.AxValue >= 150);
             if (firstIndexXExceed == -1)
             {
                 return GestureState.Waiting;
@@ -83,7 +82,6 @@ namespace WindowsFormsApp1
                     maxAz = Math.Max(maxAz, acceleration.AzValue);
                 }
             }
-
 
             if (maxAx > exceed_threshold && maxAy > exceed_threshold && maxAz > exceed_threshold)
             {
