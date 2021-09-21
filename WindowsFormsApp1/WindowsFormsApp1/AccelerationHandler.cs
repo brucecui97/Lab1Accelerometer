@@ -51,57 +51,88 @@ namespace WindowsFormsApp1
 
         public static GestureState getGestureStateQueue(FixedSizedQueue<Acceleration> accelerationsQueue)
         {
-            if (accelerationsQueue.Count < accelerationsQueue.Size)
-            {
-                return GestureState.Waiting;
-            }
-            int maxAx = 0;
-            int maxAy = 0;
-            int maxAz = 0;
-            int num_points_to_expand = 60;
-            int x_exceed_threshold = 150;
-            int y_exceed_threshold = 160;
-            int z_exceed_threshold = 200;
+            int xthreshold = 150;
+            int ythreshold = 150;
+            int zthreshold = 200;
+            int pointsToBreak = 30;
 
-            List<Acceleration> accelerations = accelerationsQueue.ToList();
-            int firstIndexXExceed = accelerations.FindIndex(a => a.AxValue >= x_exceed_threshold);
-            if (firstIndexXExceed == -1)
-            {
-                return GestureState.Waiting;
-            }
+            GestureState currentState = GestureState.Null;
+            int numPointsAfterEnteringState = 0;
 
-            if (firstIndexXExceed + num_points_to_expand > accelerationsQueue.Size ||
-                firstIndexXExceed - num_points_to_expand < 0)
-            {
-                return GestureState.Waiting;
-            }
 
-            else
+            foreach (Acceleration acceleration in accelerationsQueue.ToList())
             {
-                maxAx = accelerations[firstIndexXExceed].AxValue;
-                foreach (Acceleration acceleration in accelerations.Skip(firstIndexXExceed - num_points_to_expand).Take(2 * num_points_to_expand + 1))
+                if (numPointsAfterEnteringState > pointsToBreak)
                 {
-                    maxAy = Math.Max(maxAy, acceleration.AyValue);
-                    maxAz = Math.Max(maxAz, acceleration.AzValue);
+                    if (currentState == GestureState.X || currentState == GestureState.ZX || currentState == GestureState.XYZ)
+                    {
+                        return currentState;
+                    }
+                    else {
+                        return GestureState.Null;
+                    }
+                }
+
+                if (currentState == GestureState.Null)
+                {
+                    if (acceleration.AxValue > xthreshold)
+                    {
+                        currentState = GestureState.X;
+                        numPointsAfterEnteringState = 0;
+                    }
+                    else if (acceleration.AzValue > zthreshold)
+                    {
+                        currentState = GestureState.Z;
+                        numPointsAfterEnteringState = 0;
+                    }
+                    else
+                    {
+                        numPointsAfterEnteringState = numPointsAfterEnteringState + 1;
+                    }
+                }
+
+                else if (currentState == GestureState.Z)
+                {
+                    if (acceleration.AxValue > xthreshold)
+                    {
+                        currentState = GestureState.ZX;
+                        numPointsAfterEnteringState = 0;
+                    }
+                    else
+                    {
+                        numPointsAfterEnteringState = numPointsAfterEnteringState + 1;
+                    }
+                }
+
+                else if (currentState == GestureState.X)
+                {
+
+                    if (acceleration.AyValue > ythreshold)
+                    {
+                        currentState = GestureState.XY;
+                        numPointsAfterEnteringState = 0;
+                    }
+                    else
+                    {
+                        numPointsAfterEnteringState = numPointsAfterEnteringState + 1;
+                    }
+                }
+
+                else if (currentState == GestureState.XY)
+                {
+                    if (acceleration.AzValue > zthreshold)
+                    {
+                        currentState = GestureState.XYZ;
+                        numPointsAfterEnteringState = 0;
+                    }
+
+                    else
+                    {
+                        numPointsAfterEnteringState = numPointsAfterEnteringState + 1;
+                    }
                 }
             }
-
-            if (maxAx > x_exceed_threshold && maxAy > y_exceed_threshold && maxAz > z_exceed_threshold)
-            {
-                return GestureState.RightHookXYZ;
-            }
-            else if (maxAx > x_exceed_threshold && maxAz > z_exceed_threshold)
-            {
-                return GestureState.HighPunchZX;
-            }
-            else if (maxAx > x_exceed_threshold)
-            {
-                return GestureState.SimplePunchX;
-            }
-            else
-            {
-                return GestureState.Waiting;
-            }
+            return currentState;
         }
 
         public static GestureState getGestureState(Acceleration acceleration)

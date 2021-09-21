@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
         AccelerationAxis nextAccelerationAxis = AccelerationAxis.Unknown;
         Acceleration acceleration = new Acceleration();
-        FixedSizedQueue<Acceleration> accelerationsHistory = new FixedSizedQueue<Acceleration>(200);
+        FixedSizedQueue<Acceleration> accelerationsHistory = new FixedSizedQueue<Acceleration>(100);
         FixedSizedQueue<int> xAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);
         FixedSizedQueue<int> yAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);
         FixedSizedQueue<int> zAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);
@@ -49,12 +49,13 @@ namespace WindowsFormsApp1
                 displayAvgAcc(xAccelerationHistory, yAccelerationHistory, zAccelerationHistory);
 
                 accelerationsHistory.Enqueue(new Acceleration(acceleration));
-                if (AccelerationHandler.getGestureStateQueue(accelerationsHistory) != GestureState.Waiting)
+                if (AccelerationHandler.getGestureStateQueue(accelerationsHistory) != GestureState.Null)
                 {
                     MessageBox.Show(AccelerationHandler.getGestureStateQueue(accelerationsHistory).ToString());
                     serialPort1.DiscardInBuffer();
                     serialPort1.DiscardOutBuffer();
                     accelerationsHistory.Clear();
+                    nextAccelerationAxis = AccelerationAxis.Unknown;
                 }
                 serialDataString = serialDataString + "," + newByte.ToString();
                 bytesToRead = serialPort1.BytesToRead;
