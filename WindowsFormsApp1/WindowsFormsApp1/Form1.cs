@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
         AccelerationAxis nextAccelerationAxis = AccelerationAxis.Unknown;
         Acceleration acceleration = new Acceleration();
-        FixedSizedQueue<Acceleration> accelerationsHistory = new FixedSizedQueue<Acceleration>(50);
+        FixedSizedQueue<Acceleration> accelerationsHistory = new FixedSizedQueue<Acceleration>(200);
         FixedSizedQueue<int> xAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);
         FixedSizedQueue<int> yAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);
         FixedSizedQueue<int> zAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);

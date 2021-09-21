@@ -58,10 +58,10 @@ namespace WindowsFormsApp1
             int maxAx = 0;
             int maxAy = 0;
             int maxAz = 0;
-            int num_points_to_expand = 10;
-            int x_exceed_threshold = 170;
-            int y_exceed_threshold = 152;
-            int z_exceed_threshold = 190;
+            int num_points_to_expand = 60;
+            int x_exceed_threshold = 150;
+            int y_exceed_threshold = 160;
+            int z_exceed_threshold = 200;
 
             List<Acceleration> accelerations = accelerationsQueue.ToList();
             int firstIndexXExceed = accelerations.FindIndex(a => a.AxValue >= x_exceed_threshold);
