@@ -56,6 +56,7 @@
             this.AxAvgTxtBox = new System.Windows.Forms.TextBox();
             this.AyAvgTxtBox = new System.Windows.Forms.TextBox();
             this.AzAvgTxtBox = new System.Windows.Forms.TextBox();
+            this.stateDetectedTxtBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -285,11 +286,19 @@
             this.AzAvgTxtBox.Size = new System.Drawing.Size(57, 27);
             this.AzAvgTxtBox.TabIndex = 10;
             // 
+            // stateDetectedTxtBox
+            // 
+            this.stateDetectedTxtBox.Location = new System.Drawing.Point(308, 291);
+            this.stateDetectedTxtBox.Name = "stateDetectedTxtBox";
+            this.stateDetectedTxtBox.Size = new System.Drawing.Size(125, 27);
+            this.stateDetectedTxtBox.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 568);
+            this.Controls.Add(this.stateDetectedTxtBox);
             this.Controls.Add(this.AzAvgTxtBox);
             this.Controls.Add(this.AyAvgTxtBox);
             this.Controls.Add(this.AxAvgTxtBox);
@@ -354,6 +363,7 @@
         private System.Windows.Forms.TextBox AxAvgTxtBox;
         private System.Windows.Forms.TextBox AyAvgTxtBox;
         private System.Windows.Forms.TextBox AzAvgTxtBox;
+        private System.Windows.Forms.TextBox stateDetectedTxtBox;
     }
 }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -49,9 +50,13 @@ namespace WindowsFormsApp1
                 displayAvgAcc(xAccelerationHistory, yAccelerationHistory, zAccelerationHistory);
 
                 accelerationsHistory.Enqueue(new Acceleration(acceleration));
-                if (AccelerationHandler.getGestureStateQueue(accelerationsHistory) != GestureState.Null)
+                GestureState gestureStateDetected = AccelerationHandler.getGestureStateQueue(accelerationsHistory);
+                if (gestureStateDetected != GestureState.Null)
                 {
-                    MessageBox.Show(AccelerationHandler.getGestureStateQueue(accelerationsHistory).ToString());
+                    ThreadHelperClass.SetText(this, stateDetectedTxtBox, gestureStateDetected.ToString());
+                    Thread.Sleep(1000);
+                    ThreadHelperClass.SetText(this, stateDetectedTxtBox, "");
+
                     serialPort1.DiscardInBuffer();
                     serialPort1.DiscardOutBuffer();
                     accelerationsHistory.Clear();
