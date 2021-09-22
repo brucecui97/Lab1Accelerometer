@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Form1
+    partial class shouldDetectGestureChckBox
     {
         /// <summary>
         ///  Required designer variable.
@@ -57,6 +57,7 @@
             this.AyAvgTxtBox = new System.Windows.Forms.TextBox();
             this.AzAvgTxtBox = new System.Windows.Forms.TextBox();
             this.stateDetectedTxtBox = new System.Windows.Forms.TextBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -293,11 +294,22 @@
             this.stateDetectedTxtBox.Size = new System.Drawing.Size(125, 27);
             this.stateDetectedTxtBox.TabIndex = 11;
             // 
-            // Form1
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(527, 17);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(40, 24);
+            this.checkBox2.TabIndex = 13;
+            this.checkBox2.Text = "d";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // shouldDetectGestureChckBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 568);
+            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.stateDetectedTxtBox);
             this.Controls.Add(this.AzAvgTxtBox);
             this.Controls.Add(this.AyAvgTxtBox);
@@ -325,8 +337,8 @@
             this.Controls.Add(this.itemsInQueueTxtBox);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "shouldDetectGestureChckBox";
+            this.Text = "shoulddetectGesture";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.doWhenLoadForm);
             this.ResumeLayout(false);
@@ -364,6 +376,7 @@
         private System.Windows.Forms.TextBox AyAvgTxtBox;
         private System.Windows.Forms.TextBox AzAvgTxtBox;
         private System.Windows.Forms.TextBox stateDetectedTxtBox;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 

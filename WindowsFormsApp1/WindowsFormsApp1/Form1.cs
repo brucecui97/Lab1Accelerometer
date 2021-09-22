@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class shouldDetectGestureChckBox : Form
     {
         private static readonly int NUM_ACCELERATION_HISTORY_TO_AVERAGE = 100;
         SerialPort serialPort1 = new SerialPort("portNameNotSet", 9600, Parity.None, 8, StopBits.One);
@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
 
         String serialDataString = "";
 
-        public Form1()
+        public shouldDetectGestureChckBox()
         {
             InitializeComponent();
             serialPort1.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
@@ -51,21 +51,24 @@ namespace WindowsFormsApp1
 
                 accelerationsHistory.Enqueue(new Acceleration(acceleration));
                 GestureState gestureStateDetected = AccelerationHandler.getGestureStateQueue(accelerationsHistory);
-                if (gestureStateDetected != GestureState.Null)
+
+                if (checkBox2.Checked)
                 {
-                    ThreadHelperClass.SetText(this, stateDetectedTxtBox, gestureStateDetected.ToString());
-                    Thread.Sleep(1000);
-                    ThreadHelperClass.SetText(this, stateDetectedTxtBox, "");
+                    if (gestureStateDetected != GestureState.Null)
+                    {
+                        ThreadHelperClass.SetText(this, stateDetectedTxtBox, gestureStateDetected.ToString());
+                        Thread.Sleep(1000);
+                        ThreadHelperClass.SetText(this, stateDetectedTxtBox, "");
 
-                    serialPort1.DiscardInBuffer();
-                    serialPort1.DiscardOutBuffer();
-                    accelerationsHistory.Clear();
-                    nextAccelerationAxis = AccelerationAxis.Unknown;
+                        serialPort1.DiscardInBuffer();
+                        serialPort1.DiscardOutBuffer();
+                        accelerationsHistory.Clear();
+                        nextAccelerationAxis = AccelerationAxis.Unknown;
+                    }
+                    serialDataString = serialDataString + "," + newByte.ToString();
+                    bytesToRead = serialPort1.BytesToRead;
                 }
-                serialDataString = serialDataString + "," + newByte.ToString();
-                bytesToRead = serialPort1.BytesToRead;
             }
-
         }
         private void doWhenLoadForm(object sender, EventArgs e)
         {
