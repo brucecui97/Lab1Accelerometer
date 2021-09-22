@@ -52,7 +52,7 @@ namespace WindowsFormsApp1
                 accelerationsHistory.Enqueue(new Acceleration(acceleration));
                 GestureState gestureStateDetected = AccelerationHandler.getGestureStateQueue(accelerationsHistory);
 
-                if (checkBox2.Checked)
+                if (enableGestureDetectionBox.Checked)
                 {
                     if (gestureStateDetected != GestureState.Null)
                     {

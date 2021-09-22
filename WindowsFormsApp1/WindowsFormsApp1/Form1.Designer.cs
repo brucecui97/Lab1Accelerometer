@@ -57,7 +57,7 @@
             this.AyAvgTxtBox = new System.Windows.Forms.TextBox();
             this.AzAvgTxtBox = new System.Windows.Forms.TextBox();
             this.stateDetectedTxtBox = new System.Windows.Forms.TextBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.enableGestureDetectionBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -294,22 +294,22 @@
             this.stateDetectedTxtBox.Size = new System.Drawing.Size(125, 27);
             this.stateDetectedTxtBox.TabIndex = 11;
             // 
-            // checkBox2
+            // enableGestureDetectionBox
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(527, 17);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(40, 24);
-            this.checkBox2.TabIndex = 13;
-            this.checkBox2.Text = "d";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.enableGestureDetectionBox.AutoSize = true;
+            this.enableGestureDetectionBox.Location = new System.Drawing.Point(527, 17);
+            this.enableGestureDetectionBox.Name = "enableGestureDetectionBox";
+            this.enableGestureDetectionBox.Size = new System.Drawing.Size(230, 24);
+            this.enableGestureDetectionBox.TabIndex = 13;
+            this.enableGestureDetectionBox.Text = "should do gesture recognition";
+            this.enableGestureDetectionBox.UseVisualStyleBackColor = true;
             // 
             // shouldDetectGestureChckBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 568);
-            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.enableGestureDetectionBox);
             this.Controls.Add(this.stateDetectedTxtBox);
             this.Controls.Add(this.AzAvgTxtBox);
             this.Controls.Add(this.AyAvgTxtBox);
@@ -376,7 +376,7 @@
         private System.Windows.Forms.TextBox AyAvgTxtBox;
         private System.Windows.Forms.TextBox AzAvgTxtBox;
         private System.Windows.Forms.TextBox stateDetectedTxtBox;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox enableGestureDetectionBox;
     }
 }
 
