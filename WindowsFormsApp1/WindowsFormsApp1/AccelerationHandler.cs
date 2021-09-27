@@ -77,27 +77,14 @@ namespace WindowsFormsApp1
 
                 if (currentState == GestureState.Null)
                 {
-                    if (acceleration.AzValue  zthreshold)
+                    if (acceleration.AzValue < negativeZthreshold)
                     {
-                        currentState = GestureState.X;
+                        currentState = GestureState.negativeZ;
                         numPointsAfterEnteringState = 0;
                     }
-                    else if (acceleration.AzValue > zthreshold)
+                    else if (acceleration.AzValue > positiveZthreshold)
                     {
-                        currentState = GestureState.Z;
-                        numPointsAfterEnteringState = 0;
-                    }
-                    else
-                    {
-                        numPointsAfterEnteringState = numPointsAfterEnteringState + 1;
-                    }
-                }
-
-                else if (currentState == GestureState.Z)
-                {
-                    if (acceleration.AxValue > xthreshold)
-                    {
-                        currentState = GestureState.ZX;
+                        currentState = GestureState.positiveZ;
                         numPointsAfterEnteringState = 0;
                     }
                     else
@@ -106,12 +93,11 @@ namespace WindowsFormsApp1
                     }
                 }
 
-                else if (currentState == GestureState.X)
+                else if (currentState == GestureState.negativeZ)
                 {
-
-                    if (acceleration.AyValue > ythreshold)
+                    if (acceleration.AxValue > positiveXThreshold)
                     {
-                        currentState = GestureState.XY;
+                        currentState = GestureState.negativeZPositiveX;
                         numPointsAfterEnteringState = 0;
                     }
                     else
@@ -120,11 +106,25 @@ namespace WindowsFormsApp1
                     }
                 }
 
-                else if (currentState == GestureState.XY)
+                else if (currentState == GestureState.positiveZ)
                 {
-                    if (acceleration.AzValue > zthreshold)
+
+                    if (acceleration.AyValue > positiveYthreshold)
                     {
-                        currentState = GestureState.XYZ;
+                        currentState = GestureState.positiveZPositiveY;
+                        numPointsAfterEnteringState = 0;
+                    }
+                    else
+                    {
+                        numPointsAfterEnteringState = numPointsAfterEnteringState + 1;
+                    }
+                }
+
+                else if (currentState == GestureState.positiveZPositiveY)
+                {
+                    if (acceleration.AyValue < negativeYthreshold)
+                    {
+                        currentState = GestureState.positiveZPositiveYNegativeY;
                         numPointsAfterEnteringState = 0;
                     }
 
