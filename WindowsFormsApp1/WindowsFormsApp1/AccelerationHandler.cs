@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
 
         public static GestureState getGestureStateQueue(FixedSizedQueue<Acceleration> accelerationsQueue)
         {
-            int positiveXThreshold = 150;
+            int positiveXThreshold = 170;
             int positiveYthreshold = 150;
             int negativeYthreshold = 100;
             int positiveZthreshold = 200;
@@ -66,7 +66,7 @@ namespace WindowsFormsApp1
             {
                 if (numPointsAfterEnteringState > pointsToBreak)
                 {
-                    if (currentState == GestureState.negativeZ || currentState == GestureState.negativeZPositiveX || currentState == GestureState.positiveZPositiveYNegativeY)
+                    if (currentState == GestureState.FreeFall || currentState == GestureState.GraveDigger || currentState == GestureState.Wave)
                     {
                         return currentState;
                     }
@@ -79,7 +79,7 @@ namespace WindowsFormsApp1
                 {
                     if (acceleration.AzValue < negativeZthreshold)
                     {
-                        currentState = GestureState.negativeZ;
+                        currentState = GestureState.FreeFall;
                         numPointsAfterEnteringState = 0;
                     }
                     else if (acceleration.AzValue > positiveZthreshold)
@@ -93,11 +93,11 @@ namespace WindowsFormsApp1
                     }
                 }
 
-                else if (currentState == GestureState.negativeZ)
+                else if (currentState == GestureState.FreeFall)
                 {
                     if (acceleration.AxValue > positiveXThreshold)
                     {
-                        currentState = GestureState.negativeZPositiveX;
+                        currentState = GestureState.GraveDigger;
                         numPointsAfterEnteringState = 0;
                     }
                     else
@@ -124,7 +124,7 @@ namespace WindowsFormsApp1
                 {
                     if (acceleration.AyValue < negativeYthreshold)
                     {
-                        currentState = GestureState.positiveZPositiveYNegativeY;
+                        currentState = GestureState.Wave;
                         numPointsAfterEnteringState = 0;
                     }
 
