@@ -71,7 +71,7 @@ namespace WindowsFormsApp1
 
         public static GestureState getGestureStateQueue(FixedSizedQueue<Acceleration> accelerationsQueue)
         {
-            int positiveXThreshold = 170;
+            int positiveXThreshold = 180;
             int positiveYthreshold = 150;
             int negativeYthreshold = 100;
             int positiveZthreshold = 200;

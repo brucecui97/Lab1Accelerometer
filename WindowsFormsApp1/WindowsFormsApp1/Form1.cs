@@ -147,19 +147,19 @@ namespace WindowsFormsApp1
 
             if (xAccelerationHistory.Count > NUM_ACCELERATION_HISTORY_TO_STD) { 
                 List<double> xAcclerationsToStd = xAccelerations.Skip(Math.Max(0, xAccelerations.Count() - NUM_ACCELERATION_HISTORY_TO_STD)).ToList();
-                ThreadHelperClass.SetText(this, stdXtxtBox, AccelerationHandler.getStandardDeviation(xAcclerationsToStd).ToString());
+                ThreadHelperClass.SetText(this, stdXtxtBox, String.Format("{0:0.###}", AccelerationHandler.getStandardDeviation(xAcclerationsToStd)));
             }
 
             if (yAccelerationHistory.Count > NUM_ACCELERATION_HISTORY_TO_STD)
             {
                 List<double> yAcclerationsToStd = yAccelerations.Skip(Math.Max(0, yAccelerations.Count() - NUM_ACCELERATION_HISTORY_TO_STD)).ToList();
-                ThreadHelperClass.SetText(this, stdYTxtBox, AccelerationHandler.getStandardDeviation(yAcclerationsToStd).ToString());
+                ThreadHelperClass.SetText(this, stdYTxtBox, String.Format("{0:0.###}", AccelerationHandler.getStandardDeviation(yAcclerationsToStd)));
             }
 
             if (yAccelerationHistory.Count > NUM_ACCELERATION_HISTORY_TO_STD)
             {
                 List<double> zAcclerationsToStd = yAccelerations.Skip(Math.Max(0, zAccelerations.Count() - NUM_ACCELERATION_HISTORY_TO_STD)).ToList();
-                ThreadHelperClass.SetText(this, stdZTxtBox, AccelerationHandler.getStandardDeviation(zAcclerationsToStd).ToString());
+                ThreadHelperClass.SetText(this, stdZTxtBox, String.Format("{0:0.###}",AccelerationHandler.getStandardDeviation(zAcclerationsToStd)));
             }
 
             if (xAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_MAX) {
