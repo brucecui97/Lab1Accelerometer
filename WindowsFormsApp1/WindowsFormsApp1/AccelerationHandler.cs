@@ -9,6 +9,7 @@ namespace WindowsFormsApp1
     public class AccelerationHandler
     {
         private static readonly int NEUTRAL_ACCELERATION_VAL = 126;
+        private static readonly int ONE_G = 154 - 126;
 
         public static String getOrientationDisplayed(Acceleration acceleration)
         {
@@ -59,6 +60,10 @@ namespace WindowsFormsApp1
                     outputFile.WriteLine(timeNow.Ticks / TimeSpan.TicksPerMillisecond + "," + acceleration.ToString());
                 }
             }
+        }
+
+        public static double convertToG(double accelerationValue) {
+            return (accelerationValue - NEUTRAL_ACCELERATION_VAL) / ONE_G;
         }
 
         public static GestureState getGestureStateQueue(FixedSizedQueue<Acceleration> accelerationsQueue)
