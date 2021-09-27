@@ -58,6 +58,10 @@
             this.AzMaxTxtBox = new System.Windows.Forms.TextBox();
             this.stateDetectedTxtBox = new System.Windows.Forms.TextBox();
             this.enableGestureDetectionBox = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.stdXtxtBox = new System.Windows.Forms.TextBox();
+            this.stdZTxtBox = new System.Windows.Forms.TextBox();
+            this.stdYTxtBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -166,7 +170,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(201, 474);
+            this.label4.Location = new System.Drawing.Point(257, 476);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 20);
             this.label4.TabIndex = 0;
@@ -175,7 +179,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(106, 475);
+            this.label5.Location = new System.Drawing.Point(162, 477);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 20);
             this.label5.TabIndex = 0;
@@ -184,7 +188,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 473);
+            this.label6.Location = new System.Drawing.Point(68, 475);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(26, 20);
             this.label6.TabIndex = 0;
@@ -192,7 +196,7 @@
             // 
             // AxTxtBox
             // 
-            this.AxTxtBox.Location = new System.Drawing.Point(44, 471);
+            this.AxTxtBox.Location = new System.Drawing.Point(100, 473);
             this.AxTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AxTxtBox.Name = "AxTxtBox";
             this.AxTxtBox.Size = new System.Drawing.Size(57, 27);
@@ -200,7 +204,7 @@
             // 
             // AzTxtBox
             // 
-            this.AzTxtBox.Location = new System.Drawing.Point(233, 472);
+            this.AzTxtBox.Location = new System.Drawing.Point(289, 474);
             this.AzTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AzTxtBox.Name = "AzTxtBox";
             this.AzTxtBox.Size = new System.Drawing.Size(57, 27);
@@ -208,7 +212,7 @@
             // 
             // AyTxtBox
             // 
-            this.AyTxtBox.Location = new System.Drawing.Point(138, 470);
+            this.AyTxtBox.Location = new System.Drawing.Point(194, 472);
             this.AyTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AyTxtBox.Name = "AyTxtBox";
             this.AyTxtBox.Size = new System.Drawing.Size(57, 27);
@@ -259,7 +263,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(-7, 513);
+            this.label7.Location = new System.Drawing.Point(49, 515);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 20);
             this.label7.TabIndex = 7;
@@ -268,21 +272,21 @@
             // 
             // AxMaxTxtBox
             // 
-            this.AxMaxTxtBox.Location = new System.Drawing.Point(44, 513);
+            this.AxMaxTxtBox.Location = new System.Drawing.Point(100, 515);
             this.AxMaxTxtBox.Name = "AxMaxTxtBox";
             this.AxMaxTxtBox.Size = new System.Drawing.Size(57, 27);
             this.AxMaxTxtBox.TabIndex = 8;
             // 
             // AyMaxTxtBox
             // 
-            this.AyMaxTxtBox.Location = new System.Drawing.Point(138, 513);
+            this.AyMaxTxtBox.Location = new System.Drawing.Point(194, 515);
             this.AyMaxTxtBox.Name = "AyMaxTxtBox";
             this.AyMaxTxtBox.Size = new System.Drawing.Size(57, 27);
             this.AyMaxTxtBox.TabIndex = 9;
             // 
             // AzMaxTxtBox
             // 
-            this.AzMaxTxtBox.Location = new System.Drawing.Point(233, 513);
+            this.AzMaxTxtBox.Location = new System.Drawing.Point(289, 515);
             this.AzMaxTxtBox.Name = "AzMaxTxtBox";
             this.AzMaxTxtBox.Size = new System.Drawing.Size(57, 27);
             this.AzMaxTxtBox.TabIndex = 10;
@@ -304,11 +308,49 @@
             this.enableGestureDetectionBox.Text = "should do gesture recognition";
             this.enableGestureDetectionBox.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 558);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(93, 20);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "standardDev";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // stdXtxtBox
+            // 
+            this.stdXtxtBox.Location = new System.Drawing.Point(100, 555);
+            this.stdXtxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.stdXtxtBox.Name = "stdXtxtBox";
+            this.stdXtxtBox.Size = new System.Drawing.Size(53, 27);
+            this.stdXtxtBox.TabIndex = 15;
+            // 
+            // stdZTxtBox
+            // 
+            this.stdZTxtBox.Location = new System.Drawing.Point(289, 558);
+            this.stdZTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.stdZTxtBox.Name = "stdZTxtBox";
+            this.stdZTxtBox.Size = new System.Drawing.Size(53, 27);
+            this.stdZTxtBox.TabIndex = 16;
+            // 
+            // stdYTxtBox
+            // 
+            this.stdYTxtBox.Location = new System.Drawing.Point(194, 558);
+            this.stdYTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.stdYTxtBox.Name = "stdYTxtBox";
+            this.stdYTxtBox.Size = new System.Drawing.Size(53, 27);
+            this.stdYTxtBox.TabIndex = 17;
+            // 
             // shouldDetectGestureChckBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 568);
+            this.ClientSize = new System.Drawing.Size(947, 612);
+            this.Controls.Add(this.stdYTxtBox);
+            this.Controls.Add(this.stdZTxtBox);
+            this.Controls.Add(this.stdXtxtBox);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.enableGestureDetectionBox);
             this.Controls.Add(this.stateDetectedTxtBox);
             this.Controls.Add(this.AzMaxTxtBox);
@@ -377,6 +419,10 @@
         private System.Windows.Forms.TextBox AzMaxTxtBox;
         private System.Windows.Forms.TextBox stateDetectedTxtBox;
         private System.Windows.Forms.CheckBox enableGestureDetectionBox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox stdXtxtBox;
+        private System.Windows.Forms.TextBox stdZTxtBox;
+        private System.Windows.Forms.TextBox stdYTxtBox;
     }
 }
 
