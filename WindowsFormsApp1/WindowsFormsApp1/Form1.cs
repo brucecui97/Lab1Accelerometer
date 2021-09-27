@@ -11,15 +11,16 @@ namespace WindowsFormsApp1
 {
     public partial class shouldDetectGestureChckBox : Form
     {
-        private static readonly int NUM_ACCELERATION_HISTORY_TO_AVERAGE = 100;
+        //private static readonly int NUM_ACCELERATION_HISTORY_TO_AVERAGE = 100;
+        private static readonly int NUM_ACCELERATION_HISTORY_TO_MAX = 500;
         SerialPort serialPort1 = new SerialPort("portNameNotSet", 9600, Parity.None, 8, StopBits.One);
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
         AccelerationAxis nextAccelerationAxis = AccelerationAxis.Unknown;
         Acceleration acceleration = new Acceleration();
         FixedSizedQueue<Acceleration> accelerationsHistory = new FixedSizedQueue<Acceleration>(100);
-        FixedSizedQueue<int> xAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);
-        FixedSizedQueue<int> yAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);
-        FixedSizedQueue<int> zAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);
+        FixedSizedQueue<double> xAccelerationHistory = new FixedSizedQueue<double>(NUM_ACCELERATION_HISTORY_TO_MAX);
+        FixedSizedQueue<double> yAccelerationHistory = new FixedSizedQueue<double>(NUM_ACCELERATION_HISTORY_TO_MAX);
+        FixedSizedQueue<double> zAccelerationHistory = new FixedSizedQueue<double>(NUM_ACCELERATION_HISTORY_TO_MAX);
 
 
         String serialDataString = "";
@@ -47,7 +48,7 @@ namespace WindowsFormsApp1
                 xAccelerationHistory.Enqueue(acceleration.AxValue);
                 yAccelerationHistory.Enqueue(acceleration.AyValue);
                 zAccelerationHistory.Enqueue(acceleration.AzValue);
-                displayAvgAcc(xAccelerationHistory, yAccelerationHistory, zAccelerationHistory);
+                displayMaxAcc(xAccelerationHistory, yAccelerationHistory, zAccelerationHistory);
 
                 accelerationsHistory.Enqueue(new Acceleration(acceleration));
                 GestureState gestureStateDetected = AccelerationHandler.getGestureStateQueue(accelerationsHistory);
@@ -142,19 +143,19 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void displayAvgAcc(FixedSizedQueue<int> xAccelerations, FixedSizedQueue<int> yAccelerations, FixedSizedQueue<int> zAccelerations) {
-            if (xAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_AVERAGE) {
-                ThreadHelperClass.SetText(this, AxAvgTxtBox, xAccelerationHistory.ToList().Average().ToString());
+        private void displayMaxAcc(FixedSizedQueue<double> xAccelerations, FixedSizedQueue<double> yAccelerations, FixedSizedQueue<double> zAccelerations) {
+            if (xAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_MAX) {
+                ThreadHelperClass.SetText(this, AxAvgTxtBox, xAccelerationHistory.ToList().Max().ToString());
             }
 
-            if (yAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_AVERAGE)
+            if (yAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_MAX)
             {
-                ThreadHelperClass.SetText(this, AyAvgTxtBox, yAccelerationHistory.ToList().Average().ToString());
+                ThreadHelperClass.SetText(this, AyAvgTxtBox, yAccelerationHistory.ToList().Max().ToString());
             }
 
-            if (zAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_AVERAGE)
+            if (zAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_MAX)
             {
-                ThreadHelperClass.SetText(this, AzAvgTxtBox, zAccelerationHistory.ToList().Average().ToString());
+                ThreadHelperClass.SetText(this, AzAvgTxtBox, zAccelerationHistory.ToList().Max().ToString());
             }
         }
 
