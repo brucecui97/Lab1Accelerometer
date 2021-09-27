@@ -51,9 +51,11 @@ namespace WindowsFormsApp1
 
         public static GestureState getGestureStateQueue(FixedSizedQueue<Acceleration> accelerationsQueue)
         {
-            int xthreshold = 150;
-            int ythreshold = 150;
-            int zthreshold = 200;
+            int positiveXThreshold = 150;
+            int positiveYthreshold = 150;
+            int negativeYthreshold = 100;
+            int positiveZthreshold = 200;
+            int negativeZthreshold = 100;
             int pointsToBreak = 30;
 
             GestureState currentState = GestureState.Null;
@@ -75,7 +77,7 @@ namespace WindowsFormsApp1
 
                 if (currentState == GestureState.Null)
                 {
-                    if (acceleration.AxValue > xthreshold)
+                    if (acceleration.AzValue  zthreshold)
                     {
                         currentState = GestureState.X;
                         numPointsAfterEnteringState = 0;
