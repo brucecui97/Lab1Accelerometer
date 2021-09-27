@@ -35,6 +35,18 @@ namespace WindowsFormsApp1
             }
         }
 
+        public static double getStandardDeviation(List<double> doubles) {
+            double mean = doubles.Average();
+            double numPoints = doubles.Count;
+
+            double sumOfSquares = 0;
+            foreach (double val in doubles) {
+                sumOfSquares = sumOfSquares + (val - mean) * (val - mean);
+            }
+
+            return Math.Sqrt(sumOfSquares/numPoints);
+        }
+
         public static void writeAccelerationToFile(Acceleration acceleration, String path)
         {
 
