@@ -311,16 +311,16 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 558);
+            this.label8.Location = new System.Drawing.Point(-7, 558);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(93, 20);
+            this.label8.Size = new System.Drawing.Size(112, 20);
             this.label8.TabIndex = 14;
-            this.label8.Text = "standardDev";
+            this.label8.Text = "standardDev(g)";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // stdXtxtBox
             // 
-            this.stdXtxtBox.Location = new System.Drawing.Point(100, 555);
+            this.stdXtxtBox.Location = new System.Drawing.Point(104, 555);
             this.stdXtxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.stdXtxtBox.Name = "stdXtxtBox";
             this.stdXtxtBox.Size = new System.Drawing.Size(53, 27);
