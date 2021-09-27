@@ -36,16 +36,18 @@ namespace WindowsFormsApp1
             }
         }
 
-        public static double getStandardDeviation(List<double> doubles) {
+        public static double getStandardDeviation(List<double> doubles)
+        {
             double mean = doubles.Average();
             double numPoints = doubles.Count;
 
             double sumOfSquares = 0;
-            foreach (double val in doubles) {
+            foreach (double val in doubles)
+            {
                 sumOfSquares = sumOfSquares + (val - mean) * (val - mean);
             }
 
-            return Math.Sqrt(sumOfSquares/numPoints);
+            return Math.Sqrt(sumOfSquares / numPoints);
         }
 
         public static void writeAccelerationToFile(Acceleration acceleration, String path)
@@ -62,7 +64,8 @@ namespace WindowsFormsApp1
             }
         }
 
-        public static double convertToG(double accelerationValue) {
+        public static double convertToG(double accelerationValue)
+        {
             return (accelerationValue - NEUTRAL_ACCELERATION_VAL) / ONE_G;
         }
 
@@ -87,7 +90,8 @@ namespace WindowsFormsApp1
                     {
                         return currentState;
                     }
-                    else {
+                    else
+                    {
                         return GestureState.Null;
                     }
                 }
@@ -152,6 +156,13 @@ namespace WindowsFormsApp1
                 }
             }
             return currentState;
+        }
+
+        public static double getMaxAbsValWithSign(List<double> doubles)
+        {
+
+            return doubles.OrderByDescending(z => Math.Abs(z)).FirstOrDefault();
+
         }
 
         public static GestureState getGestureState(Acceleration acceleration)

@@ -163,17 +163,17 @@ namespace WindowsFormsApp1
             }
 
             if (xAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_MAX) {
-                ThreadHelperClass.SetText(this, AxMaxTxtBox, xAccelerationHistory.ToList().Max().ToString());
+                ThreadHelperClass.SetText(this, AxMaxTxtBox, AccelerationHandler.getMaxAbsValWithSign(xAccelerationHistory.ToList()).ToString());
             }
 
             if (yAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_MAX)
             {
-                ThreadHelperClass.SetText(this, AyMaxTxtBox, yAccelerationHistory.ToList().Max().ToString());
+                ThreadHelperClass.SetText(this, AyMaxTxtBox, AccelerationHandler.getMaxAbsValWithSign(yAccelerationHistory.ToList()).ToString());
             }
 
             if (zAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_MAX)
             {
-                ThreadHelperClass.SetText(this, AzMaxTxtBox, zAccelerationHistory.ToList().Max().ToString());
+                ThreadHelperClass.SetText(this, AzMaxTxtBox, AccelerationHandler.getMaxAbsValWithSign(zAccelerationHistory.ToList()).ToString());
             }
         }
 
