@@ -6,6 +6,13 @@ namespace WindowsFormsApp1
 {
     public enum GestureState
     {
+        negativeZ,
+        negativeZPositiveX,
+        positiveZ,
+        positiveZPositiveY,
+        positiveZPositiveYNegativeY,
+        positiveY,
+        negativeY,
         X,
         Z,
         ZX,

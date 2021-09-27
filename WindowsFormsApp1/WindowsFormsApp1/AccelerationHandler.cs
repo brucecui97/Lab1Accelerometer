@@ -64,7 +64,7 @@ namespace WindowsFormsApp1
             {
                 if (numPointsAfterEnteringState > pointsToBreak)
                 {
-                    if (currentState == GestureState.X || currentState == GestureState.ZX || currentState == GestureState.XYZ)
+                    if (currentState == GestureState.negativeZ || currentState == GestureState.negativeZPositiveX || currentState == GestureState.positiveZPositiveYNegativeY)
                     {
                         return currentState;
                     }
