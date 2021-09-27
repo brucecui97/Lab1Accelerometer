@@ -45,9 +45,9 @@ namespace WindowsFormsApp1
                 AccelerationHandler.writeAccelerationToFile(acceleration, selectFileNameTxtBox.Text);
                 dataQueue.Enqueue(newByte);
 
-                xAccelerationHistory.Enqueue(acceleration.AxValue);
-                yAccelerationHistory.Enqueue(acceleration.AyValue);
-                zAccelerationHistory.Enqueue(acceleration.AzValue);
+                xAccelerationHistory.Enqueue(AccelerationHandler.convertToG(acceleration.AxValue));
+                yAccelerationHistory.Enqueue(AccelerationHandler.convertToG(acceleration.AyValue));
+                zAccelerationHistory.Enqueue(AccelerationHandler.convertToG(acceleration.AzValue));
                 displayMaxAcc(xAccelerationHistory, yAccelerationHistory, zAccelerationHistory);
 
                 accelerationsHistory.Enqueue(new Acceleration(acceleration));
@@ -145,17 +145,17 @@ namespace WindowsFormsApp1
 
         private void displayMaxAcc(FixedSizedQueue<double> xAccelerations, FixedSizedQueue<double> yAccelerations, FixedSizedQueue<double> zAccelerations) {
             if (xAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_MAX) {
-                ThreadHelperClass.SetText(this, AxAvgTxtBox, xAccelerationHistory.ToList().Max().ToString());
+                ThreadHelperClass.SetText(this, AxMaxTxtBox, xAccelerationHistory.ToList().Max().ToString());
             }
 
             if (yAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_MAX)
             {
-                ThreadHelperClass.SetText(this, AyAvgTxtBox, yAccelerationHistory.ToList().Max().ToString());
+                ThreadHelperClass.SetText(this, AyMaxTxtBox, yAccelerationHistory.ToList().Max().ToString());
             }
 
             if (zAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_MAX)
             {
-                ThreadHelperClass.SetText(this, AzAvgTxtBox, zAccelerationHistory.ToList().Max().ToString());
+                ThreadHelperClass.SetText(this, AzMaxTxtBox, zAccelerationHistory.ToList().Max().ToString());
             }
         }
 

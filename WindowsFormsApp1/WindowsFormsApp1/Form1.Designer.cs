@@ -53,9 +53,9 @@
             this.selectFileNameButton = new System.Windows.Forms.Button();
             this.selectFileNameTxtBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.AxAvgTxtBox = new System.Windows.Forms.TextBox();
-            this.AyAvgTxtBox = new System.Windows.Forms.TextBox();
-            this.AzAvgTxtBox = new System.Windows.Forms.TextBox();
+            this.AxMaxTxtBox = new System.Windows.Forms.TextBox();
+            this.AyMaxTxtBox = new System.Windows.Forms.TextBox();
+            this.AzMaxTxtBox = new System.Windows.Forms.TextBox();
             this.stateDetectedTxtBox = new System.Windows.Forms.TextBox();
             this.enableGestureDetectionBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
@@ -259,33 +259,33 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 513);
+            this.label7.Location = new System.Drawing.Point(-7, 513);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 20);
+            this.label7.Size = new System.Drawing.Size(56, 20);
             this.label7.TabIndex = 7;
-            this.label7.Text = "Avg";
+            this.label7.Text = "max(g)";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
-            // AxAvgTxtBox
+            // AxMaxTxtBox
             // 
-            this.AxAvgTxtBox.Location = new System.Drawing.Point(44, 513);
-            this.AxAvgTxtBox.Name = "AxAvgTxtBox";
-            this.AxAvgTxtBox.Size = new System.Drawing.Size(57, 27);
-            this.AxAvgTxtBox.TabIndex = 8;
+            this.AxMaxTxtBox.Location = new System.Drawing.Point(44, 513);
+            this.AxMaxTxtBox.Name = "AxMaxTxtBox";
+            this.AxMaxTxtBox.Size = new System.Drawing.Size(57, 27);
+            this.AxMaxTxtBox.TabIndex = 8;
             // 
-            // AyAvgTxtBox
+            // AyMaxTxtBox
             // 
-            this.AyAvgTxtBox.Location = new System.Drawing.Point(138, 513);
-            this.AyAvgTxtBox.Name = "AyAvgTxtBox";
-            this.AyAvgTxtBox.Size = new System.Drawing.Size(57, 27);
-            this.AyAvgTxtBox.TabIndex = 9;
+            this.AyMaxTxtBox.Location = new System.Drawing.Point(138, 513);
+            this.AyMaxTxtBox.Name = "AyMaxTxtBox";
+            this.AyMaxTxtBox.Size = new System.Drawing.Size(57, 27);
+            this.AyMaxTxtBox.TabIndex = 9;
             // 
-            // AzAvgTxtBox
+            // AzMaxTxtBox
             // 
-            this.AzAvgTxtBox.Location = new System.Drawing.Point(233, 513);
-            this.AzAvgTxtBox.Name = "AzAvgTxtBox";
-            this.AzAvgTxtBox.Size = new System.Drawing.Size(57, 27);
-            this.AzAvgTxtBox.TabIndex = 10;
+            this.AzMaxTxtBox.Location = new System.Drawing.Point(233, 513);
+            this.AzMaxTxtBox.Name = "AzMaxTxtBox";
+            this.AzMaxTxtBox.Size = new System.Drawing.Size(57, 27);
+            this.AzMaxTxtBox.TabIndex = 10;
             // 
             // stateDetectedTxtBox
             // 
@@ -311,9 +311,9 @@
             this.ClientSize = new System.Drawing.Size(947, 568);
             this.Controls.Add(this.enableGestureDetectionBox);
             this.Controls.Add(this.stateDetectedTxtBox);
-            this.Controls.Add(this.AzAvgTxtBox);
-            this.Controls.Add(this.AyAvgTxtBox);
-            this.Controls.Add(this.AxAvgTxtBox);
+            this.Controls.Add(this.AzMaxTxtBox);
+            this.Controls.Add(this.AyMaxTxtBox);
+            this.Controls.Add(this.AxMaxTxtBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.selectFileNameTxtBox);
             this.Controls.Add(this.selectFileNameButton);
@@ -372,9 +372,9 @@
         private System.Windows.Forms.Button selectFileNameButton;
         private System.Windows.Forms.TextBox selectFileNameTxtBox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox AxAvgTxtBox;
-        private System.Windows.Forms.TextBox AyAvgTxtBox;
-        private System.Windows.Forms.TextBox AzAvgTxtBox;
+        private System.Windows.Forms.TextBox AxMaxTxtBox;
+        private System.Windows.Forms.TextBox AyMaxTxtBox;
+        private System.Windows.Forms.TextBox AzMaxTxtBox;
         private System.Windows.Forms.TextBox stateDetectedTxtBox;
         private System.Windows.Forms.CheckBox enableGestureDetectionBox;
     }
