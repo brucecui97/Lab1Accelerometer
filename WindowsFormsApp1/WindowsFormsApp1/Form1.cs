@@ -11,7 +11,7 @@ namespace WindowsFormsApp1
 {
     public partial class shouldDetectGestureChckBox : Form
     {
-        //private static readonly int NUM_ACCELERATION_HISTORY_TO_AVERAGE = 100;
+        private static readonly int NUM_ACCELERATION_HISTORY_TO_STD = 100;
         private static readonly int NUM_ACCELERATION_HISTORY_TO_MAX = 500;
         SerialPort serialPort1 = new SerialPort("portNameNotSet", 9600, Parity.None, 8, StopBits.One);
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
@@ -144,6 +144,24 @@ namespace WindowsFormsApp1
         }
 
         private void displayMaxAcc(FixedSizedQueue<double> xAccelerations, FixedSizedQueue<double> yAccelerations, FixedSizedQueue<double> zAccelerations) {
+
+            if (xAccelerationHistory.Count > NUM_ACCELERATION_HISTORY_TO_STD) { 
+                List<double> xAcclerationsToStd = xAccelerations.Skip(Math.Max(0, xAccelerations.Count() - NUM_ACCELERATION_HISTORY_TO_STD)).ToList();
+                ThreadHelperClass.SetText(this, stdXtxtBox, AccelerationHandler.getStandardDeviation(xAcclerationsToStd).ToString());
+            }
+
+            if (yAccelerationHistory.Count > NUM_ACCELERATION_HISTORY_TO_STD)
+            {
+                List<double> yAcclerationsToStd = yAccelerations.Skip(Math.Max(0, yAccelerations.Count() - NUM_ACCELERATION_HISTORY_TO_STD)).ToList();
+                ThreadHelperClass.SetText(this, stdYTxtBox, AccelerationHandler.getStandardDeviation(yAcclerationsToStd).ToString());
+            }
+
+            if (yAccelerationHistory.Count > NUM_ACCELERATION_HISTORY_TO_STD)
+            {
+                List<double> zAcclerationsToStd = yAccelerations.Skip(Math.Max(0, zAccelerations.Count() - NUM_ACCELERATION_HISTORY_TO_STD)).ToList();
+                ThreadHelperClass.SetText(this, stdZTxtBox, AccelerationHandler.getStandardDeviation(zAcclerationsToStd).ToString());
+            }
+
             if (xAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_MAX) {
                 ThreadHelperClass.SetText(this, AxMaxTxtBox, xAccelerationHistory.ToList().Max().ToString());
             }
