@@ -4,11 +4,12 @@ using System.Text;
 
 namespace WindowsFormsApp1
 {
-    enum AccelerationAxis
+    enum EncoderValues
     {
-        Ax,
-        Ay,
-        Az,
         Unknown,
+        ChannelAMSB,
+        ChannelALSB,
+        ChannelBMSB,
+        ChannelBLSB,
     }
 }

@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
     {
         SerialPort serialPort1 = new SerialPort("portNameNotSet", 9600, Parity.None, 8, StopBits.One);
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
-        AccelerationAxis nextAccelerationAxis = AccelerationAxis.Unknown;
+        EncoderValues nextAccelerationAxis = EncoderValues.Unknown;
         Acceleration acceleration = new Acceleration();
 
        
@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
             {
                 ThreadHelperClass.SetText(this, serialBytesToReadTxtBox, serialPort1.BytesToRead.ToString());
                 int newByte = serialPort1.ReadByte();
-                AssignToAccelerationAxis(newByte);
+                processEncoderStream(newByte);
                 //ThreadHelperClass.SetText(this, orientationTxtBox, EncoderHandler.getOrientationDisplayed(acceleration));
                 //EncoderHandler.writeAccelerationToFile(acceleration, selectFileNameTxtBox.Text);
                 dataQueue.Enqueue(newByte);
@@ -84,35 +84,35 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void AssignToAccelerationAxis(int newByte)
+        private void processEncoderStream(int newByte)
         {
-            if (nextAccelerationAxis == AccelerationAxis.Unknown)
-            {
-                if (newByte == 255)
-                {
-                    nextAccelerationAxis = AccelerationAxis.Ax;
-                }
-            }
-            else if (nextAccelerationAxis == AccelerationAxis.Ax)
-            {
-                acceleration.AxValue = newByte;
-                ThreadHelperClass.SetText(this, AxTxtBox, acceleration.AxValue.ToString());
-                nextAccelerationAxis = AccelerationAxis.Ay;
-            }
+            //if (nextAccelerationAxis == EncoderValues.Unknown)
+            //{
+            //    if (newByte == 255)
+            //    {
+            //        //nextAccelerationAxis = EncoderValues.ChannelAMSB;
+            //    }
+            //}
+            //else if (nextAccelerationAxis == EncoderValues.ChannelAMSB)
+            //{
 
-            else if (nextAccelerationAxis == AccelerationAxis.Ay)
-            {
-                acceleration.AyValue = newByte;
-                ThreadHelperClass.SetText(this, AyTxtBox, acceleration.AyValue.ToString());
-                nextAccelerationAxis = AccelerationAxis.Az;
-            }
+            //    //ThreadHelperClass.SetText(this, AxTxtBox, acceleration.AxValue.ToString());
+            //    //nextAccelerationAxis = EncoderValues.Ay;
+            //}
 
-            else if (nextAccelerationAxis == AccelerationAxis.Az)
-            {
-                acceleration.AzValue = newByte;
-                ThreadHelperClass.SetText(this, AzTxtBox, acceleration.AzValue.ToString());
-                nextAccelerationAxis = AccelerationAxis.Unknown;
-            }
+            //else if (nextAccelerationAxis == EncoderValues.Ay)
+            //{
+            //    acceleration.AyValue = newByte;
+            //    ThreadHelperClass.SetText(this, AyTxtBox, acceleration.AyValue.ToString());
+            //    nextAccelerationAxis = EncoderValues.Az;
+            //}
+
+            //else if (nextAccelerationAxis == EncoderValues.Az)
+            //{
+            //    acceleration.AzValue = newByte;
+            //    ThreadHelperClass.SetText(this, AzTxtBox, acceleration.AzValue.ToString());
+            //    nextAccelerationAxis = EncoderValues.Unknown;
+            //}
         }
 
 
