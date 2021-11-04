@@ -12,13 +12,13 @@ namespace WindowsFormsApp1.Tests
         [TestMethod()]
         public void getGesture_forwardPunchReturned()
         {
-            Assert.AreEqual(GestureState.SimplePunchX, AccelerationHandler.getGestureState(new Acceleration(200, 125, 125)));
+            Assert.AreEqual(GestureState.SimplePunchX, EncoderHandler.getGestureState(new Acceleration(200, 125, 125)));
         }
 
         [TestMethod()]
         public void getGesture_upperCutReturned()
         {
-            Assert.AreEqual(GestureState.HighPunchZX, AccelerationHandler.getGestureState(new Acceleration(200, 125, 200)));
+            Assert.AreEqual(GestureState.HighPunchZX, EncoderHandler.getGestureState(new Acceleration(200, 125, 200)));
 
         }
 
@@ -27,7 +27,7 @@ namespace WindowsFormsApp1.Tests
         public void getGesture_righthookReturned()
         {
 
-            Assert.AreEqual(GestureState.RightHookXYZ, AccelerationHandler.getGestureState(new Acceleration(200, 200, 200)));
+            Assert.AreEqual(GestureState.RightHookXYZ, EncoderHandler.getGestureState(new Acceleration(200, 200, 200)));
         }
 
         [TestMethod()]
@@ -46,7 +46,7 @@ namespace WindowsFormsApp1.Tests
             }
             accelerationsQueue.Enqueue(new Acceleration(201, 126, 126));
 
-            Assert.AreEqual(AccelerationHandler.getGestureStateQueue(accelerationsQueue), GestureState.SimplePunchX);
+            Assert.AreEqual(EncoderHandler.getGestureStateQueue(accelerationsQueue), GestureState.SimplePunchX);
         }
     }
 }

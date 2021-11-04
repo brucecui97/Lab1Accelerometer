@@ -35,8 +35,8 @@ namespace WindowsFormsApp1
                 ThreadHelperClass.SetText(this, serialBytesToReadTxtBox, serialPort1.BytesToRead.ToString());
                 int newByte = serialPort1.ReadByte();
                 AssignToAccelerationAxis(newByte);
-                ThreadHelperClass.SetText(this, orientationTxtBox, AccelerationHandler.getOrientationDisplayed(acceleration));
-                AccelerationHandler.writeAccelerationToFile(acceleration, selectFileNameTxtBox.Text);
+                //ThreadHelperClass.SetText(this, orientationTxtBox, EncoderHandler.getOrientationDisplayed(acceleration));
+                //EncoderHandler.writeAccelerationToFile(acceleration, selectFileNameTxtBox.Text);
                 dataQueue.Enqueue(newByte);
 
                 serialDataString = serialDataString + "," + newByte.ToString();
