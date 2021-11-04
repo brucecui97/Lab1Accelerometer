@@ -12,12 +12,7 @@ namespace WindowsFormsApp1
     {
         SerialPort serialPort1 = new SerialPort("portNameNotSet", 9600, Parity.None, 8, StopBits.One);
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
-        EncoderValues nextAccelerationAxis = EncoderValues.Unknown;
-        Acceleration acceleration = new Acceleration();
-
-       
-
-        String serialDataString = "";
+        string serialDataString = "";
 
         public Form1()
         {
