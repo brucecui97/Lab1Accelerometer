@@ -41,21 +41,11 @@
             this.comboBoxCOMPorts = new System.Windows.Forms.ComboBox();
             this.displayContentTimer = new System.Windows.Forms.Timer(this.components);
             this.debugTxtBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.AxTxtBox = new System.Windows.Forms.TextBox();
-            this.AzTxtBox = new System.Windows.Forms.TextBox();
-            this.AyTxtBox = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.orientationTxtBox = new System.Windows.Forms.TextBox();
             this.closePortButton = new System.Windows.Forms.Button();
             this.selectFileNameButton = new System.Windows.Forms.Button();
             this.selectFileNameTxtBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.AxAvgTxtBox = new System.Windows.Forms.TextBox();
-            this.AyAvgTxtBox = new System.Windows.Forms.TextBox();
-            this.AzAvgTxtBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -161,57 +151,6 @@
             this.debugTxtBox.TabIndex = 4;
             this.debugTxtBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(201, 474);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 20);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Az";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(106, 475);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(26, 20);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Ay";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 473);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 20);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Ax";
-            // 
-            // AxTxtBox
-            // 
-            this.AxTxtBox.Location = new System.Drawing.Point(44, 471);
-            this.AxTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.AxTxtBox.Name = "AxTxtBox";
-            this.AxTxtBox.Size = new System.Drawing.Size(57, 27);
-            this.AxTxtBox.TabIndex = 1;
-            // 
-            // AzTxtBox
-            // 
-            this.AzTxtBox.Location = new System.Drawing.Point(233, 472);
-            this.AzTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.AzTxtBox.Name = "AzTxtBox";
-            this.AzTxtBox.Size = new System.Drawing.Size(57, 27);
-            this.AzTxtBox.TabIndex = 1;
-            // 
-            // AyTxtBox
-            // 
-            this.AyTxtBox.Location = new System.Drawing.Point(138, 470);
-            this.AyTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.AyTxtBox.Name = "AyTxtBox";
-            this.AyTxtBox.Size = new System.Drawing.Size(57, 27);
-            this.AyTxtBox.TabIndex = 1;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -254,56 +193,15 @@
             this.selectFileNameTxtBox.Size = new System.Drawing.Size(312, 27);
             this.selectFileNameTxtBox.TabIndex = 6;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 513);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 20);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Avg";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // AxAvgTxtBox
-            // 
-            this.AxAvgTxtBox.Location = new System.Drawing.Point(44, 513);
-            this.AxAvgTxtBox.Name = "AxAvgTxtBox";
-            this.AxAvgTxtBox.Size = new System.Drawing.Size(57, 27);
-            this.AxAvgTxtBox.TabIndex = 8;
-            // 
-            // AyAvgTxtBox
-            // 
-            this.AyAvgTxtBox.Location = new System.Drawing.Point(138, 513);
-            this.AyAvgTxtBox.Name = "AyAvgTxtBox";
-            this.AyAvgTxtBox.Size = new System.Drawing.Size(57, 27);
-            this.AyAvgTxtBox.TabIndex = 9;
-            // 
-            // AzAvgTxtBox
-            // 
-            this.AzAvgTxtBox.Location = new System.Drawing.Point(233, 513);
-            this.AzAvgTxtBox.Name = "AzAvgTxtBox";
-            this.AzAvgTxtBox.Size = new System.Drawing.Size(57, 27);
-            this.AzAvgTxtBox.TabIndex = 10;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 568);
-            this.Controls.Add(this.AzAvgTxtBox);
-            this.Controls.Add(this.AyAvgTxtBox);
-            this.Controls.Add(this.AxAvgTxtBox);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.selectFileNameTxtBox);
             this.Controls.Add(this.selectFileNameButton);
             this.Controls.Add(this.closePortButton);
             this.Controls.Add(this.orientationTxtBox);
-            this.Controls.Add(this.AyTxtBox);
-            this.Controls.Add(this.AzTxtBox);
-            this.Controls.Add(this.AxTxtBox);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.debugTxtBox);
             this.Controls.Add(this.comboBoxCOMPorts);
             this.Controls.Add(this.serialDataStringTxtBox);
@@ -339,21 +237,11 @@
         private System.Windows.Forms.ComboBox comboBoxCOMPorts;
         private System.Windows.Forms.Timer displayContentTimer;
         private System.Windows.Forms.TextBox debugTxtBox;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox AxTxtBox;
-        private System.Windows.Forms.TextBox AzTxtBox;
-        private System.Windows.Forms.TextBox AyTxtBox;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TextBox orientationTxtBox;
         private System.Windows.Forms.Button closePortButton;
         private System.Windows.Forms.Button selectFileNameButton;
         private System.Windows.Forms.TextBox selectFileNameTxtBox;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox AxAvgTxtBox;
-        private System.Windows.Forms.TextBox AyAvgTxtBox;
-        private System.Windows.Forms.TextBox AzAvgTxtBox;
     }
 }
 
