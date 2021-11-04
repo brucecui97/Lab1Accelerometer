@@ -10,16 +10,12 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        private static readonly int NUM_ACCELERATION_HISTORY_TO_AVERAGE = 100;
         SerialPort serialPort1 = new SerialPort("portNameNotSet", 9600, Parity.None, 8, StopBits.One);
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
         AccelerationAxis nextAccelerationAxis = AccelerationAxis.Unknown;
         Acceleration acceleration = new Acceleration();
-        FixedSizedQueue<Acceleration> accelerationsHistory = new FixedSizedQueue<Acceleration>(100);
-        FixedSizedQueue<int> xAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);
-        FixedSizedQueue<int> yAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);
-        FixedSizedQueue<int> zAccelerationHistory = new FixedSizedQueue<int>(NUM_ACCELERATION_HISTORY_TO_AVERAGE);
 
+       
 
         String serialDataString = "";
 
@@ -43,20 +39,6 @@ namespace WindowsFormsApp1
                 AccelerationHandler.writeAccelerationToFile(acceleration, selectFileNameTxtBox.Text);
                 dataQueue.Enqueue(newByte);
 
-                xAccelerationHistory.Enqueue(acceleration.AxValue);
-                yAccelerationHistory.Enqueue(acceleration.AyValue);
-                zAccelerationHistory.Enqueue(acceleration.AzValue);
-                displayAvgAcc(xAccelerationHistory, yAccelerationHistory, zAccelerationHistory);
-
-                accelerationsHistory.Enqueue(new Acceleration(acceleration));
-                if (AccelerationHandler.getGestureStateQueue(accelerationsHistory) != GestureState.Null)
-                {
-                    MessageBox.Show(AccelerationHandler.getGestureStateQueue(accelerationsHistory).ToString());
-                    serialPort1.DiscardInBuffer();
-                    serialPort1.DiscardOutBuffer();
-                    accelerationsHistory.Clear();
-                    nextAccelerationAxis = AccelerationAxis.Unknown;
-                }
                 serialDataString = serialDataString + "," + newByte.ToString();
                 bytesToRead = serialPort1.BytesToRead;
             }
@@ -79,7 +61,6 @@ namespace WindowsFormsApp1
             debugTxtBox.AppendText("clicked open port");
             serialPort1.PortName = comboBoxCOMPorts.Text;
             serialPort1.Open();
-            serialPort1.Write("A");
             displayContentTimer.Enabled = true;
             debugTxtBox.AppendText("enabled timer");
         }
@@ -134,21 +115,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void displayAvgAcc(FixedSizedQueue<int> xAccelerations, FixedSizedQueue<int> yAccelerations, FixedSizedQueue<int> zAccelerations) {
-            if (xAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_AVERAGE) {
-                ThreadHelperClass.SetText(this, AxAvgTxtBox, xAccelerationHistory.ToList().Average().ToString());
-            }
-
-            if (yAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_AVERAGE)
-            {
-                ThreadHelperClass.SetText(this, AyAvgTxtBox, yAccelerationHistory.ToList().Average().ToString());
-            }
-
-            if (zAccelerationHistory.Count == NUM_ACCELERATION_HISTORY_TO_AVERAGE)
-            {
-                ThreadHelperClass.SetText(this, AzAvgTxtBox, zAccelerationHistory.ToList().Average().ToString());
-            }
-        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
