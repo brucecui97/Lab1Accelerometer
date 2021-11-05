@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WindowsFormsApp1
 {
-    enum EncoderValues
+    enum EncoderDataCategory
     {
         Unknown,
         ChannelAMSB,

@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
         Int32 channelBDiffMSB = -1;
         Int32 channelBDiffLSB = -1;
 
-        EncoderValues currentEncoderValue = EncoderValues.Unknown;
+        EncoderDataCategory currentEncoderValue = EncoderDataCategory.Unknown;
 
         public Form1()
         {
@@ -87,40 +87,40 @@ namespace WindowsFormsApp1
 
         private void processEncoderStream(int newByte)
         {
-            if (currentEncoderValue == EncoderValues.Unknown)
+            if (currentEncoderValue == EncoderDataCategory.Unknown)
             {
                 if (newByte == 255)
                 {
-                    currentEncoderValue = EncoderValues.ChannelAMSB;
+                    currentEncoderValue = EncoderDataCategory.ChannelAMSB;
                 }
             }
-            else if (currentEncoderValue == EncoderValues.ChannelAMSB)
+            else if (currentEncoderValue == EncoderDataCategory.ChannelAMSB)
             {
                 channelADiffMSB = newByte;
 
                 ThreadHelperClass.SetText(this, ADiffMSBTxtBox, channelADiffMSB.ToString());
-                currentEncoderValue = EncoderValues.ChannelALSB;
+                currentEncoderValue = EncoderDataCategory.ChannelALSB;
             }
 
-            else if (currentEncoderValue == EncoderValues.ChannelALSB)
+            else if (currentEncoderValue == EncoderDataCategory.ChannelALSB)
             {
                 channelADiffLSB = newByte;
                 ThreadHelperClass.SetText(this, ADiffLSBTxtBox, channelADiffLSB.ToString());
-                currentEncoderValue = EncoderValues.ChannelBMSB;
+                currentEncoderValue = EncoderDataCategory.ChannelBMSB;
             }
 
-            else if (currentEncoderValue == EncoderValues.ChannelBMSB)
+            else if (currentEncoderValue == EncoderDataCategory.ChannelBMSB)
             {
                 channelBDiffMSB = newByte;
                 ThreadHelperClass.SetText(this, BDiffMSBTxtBox, channelBDiffMSB.ToString());
-                currentEncoderValue = EncoderValues.ChannelBLSB;
+                currentEncoderValue = EncoderDataCategory.ChannelBLSB;
             }
 
 
-            else if (currentEncoderValue == EncoderValues.ChannelBLSB) {
+            else if (currentEncoderValue == EncoderDataCategory.ChannelBLSB) {
                 channelBDiffLSB = newByte;
                 ThreadHelperClass.SetText(this, BDiffLSBTxtBox, channelBDiffLSB.ToString());
-                currentEncoderValue = EncoderValues.Unknown;
+                currentEncoderValue = EncoderDataCategory.Unknown;
                 //processData
             }
         }
