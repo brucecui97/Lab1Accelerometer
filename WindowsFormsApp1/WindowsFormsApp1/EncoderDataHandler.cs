@@ -6,7 +6,7 @@ using System.Text;
 
 namespace WindowsFormsApp1
 {
-    public class EncoderHandler
+    public class EncoderDataHandler
     {
 
     }
