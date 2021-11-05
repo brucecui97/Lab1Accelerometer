@@ -118,7 +118,7 @@ namespace WindowsFormsApp1
                 encoderData.channelBDiffLSB = newByte;
                 ThreadHelperClass.SetText(this, BDiffLSBTxtBox, encoderData.channelBDiffLSB.ToString());
                 currentEncoderValue = EncoderDataCategory.Unknown;
-                //processData
+                ThreadHelperClass.SetText(this, revPerSecTxtBox, EncoderDataHandler.calculateRotationalSpeedHz(encoderData).ToString());
             }
         }
 
