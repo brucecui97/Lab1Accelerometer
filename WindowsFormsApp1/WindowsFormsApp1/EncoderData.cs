@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WindowsFormsApp1
 {
-    class EncoderData
+    public class EncoderData
     {
         public Int32 channelADiffMSB = -1;
         public Int32 channelADiffLSB = -1;
