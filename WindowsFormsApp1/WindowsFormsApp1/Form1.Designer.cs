@@ -46,6 +46,14 @@
             this.closePortButton = new System.Windows.Forms.Button();
             this.selectFileNameButton = new System.Windows.Forms.Button();
             this.selectFileNameTxtBox = new System.Windows.Forms.TextBox();
+            this.ADiffMSBTxtBox = new System.Windows.Forms.TextBox();
+            this.ADiffLSBTxtBox = new System.Windows.Forms.TextBox();
+            this.BDiffMSBTxtBox = new System.Windows.Forms.TextBox();
+            this.BDiffLSBTxtBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -193,11 +201,84 @@
             this.selectFileNameTxtBox.Size = new System.Drawing.Size(312, 27);
             this.selectFileNameTxtBox.TabIndex = 6;
             // 
+            // ADiffMSBTxtBox
+            // 
+            this.ADiffMSBTxtBox.Location = new System.Drawing.Point(26, 456);
+            this.ADiffMSBTxtBox.Name = "ADiffMSBTxtBox";
+            this.ADiffMSBTxtBox.Size = new System.Drawing.Size(53, 27);
+            this.ADiffMSBTxtBox.TabIndex = 7;
+            // 
+            // ADiffLSBTxtBox
+            // 
+            this.ADiffLSBTxtBox.Location = new System.Drawing.Point(85, 456);
+            this.ADiffLSBTxtBox.Name = "ADiffLSBTxtBox";
+            this.ADiffLSBTxtBox.Size = new System.Drawing.Size(47, 27);
+            this.ADiffLSBTxtBox.TabIndex = 8;
+            // 
+            // BDiffMSBTxtBox
+            // 
+            this.BDiffMSBTxtBox.Location = new System.Drawing.Point(171, 455);
+            this.BDiffMSBTxtBox.Name = "BDiffMSBTxtBox";
+            this.BDiffMSBTxtBox.Size = new System.Drawing.Size(50, 27);
+            this.BDiffMSBTxtBox.TabIndex = 9;
+            // 
+            // BDiffLSBTxtBox
+            // 
+            this.BDiffLSBTxtBox.Location = new System.Drawing.Point(227, 455);
+            this.BDiffLSBTxtBox.Name = "BDiffLSBTxtBox";
+            this.BDiffLSBTxtBox.Size = new System.Drawing.Size(50, 27);
+            this.BDiffLSBTxtBox.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 497);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 20);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "AMSB";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(236, 497);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 20);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "BLSB";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(172, 497);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 20);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "BMSB";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(81, 497);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(43, 20);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "ALSB";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 568);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.BDiffLSBTxtBox);
+            this.Controls.Add(this.BDiffMSBTxtBox);
+            this.Controls.Add(this.ADiffLSBTxtBox);
+            this.Controls.Add(this.ADiffMSBTxtBox);
             this.Controls.Add(this.selectFileNameTxtBox);
             this.Controls.Add(this.selectFileNameButton);
             this.Controls.Add(this.closePortButton);
@@ -242,6 +323,14 @@
         private System.Windows.Forms.Button closePortButton;
         private System.Windows.Forms.Button selectFileNameButton;
         private System.Windows.Forms.TextBox selectFileNameTxtBox;
+        private System.Windows.Forms.TextBox ADiffMSBTxtBox;
+        private System.Windows.Forms.TextBox ADiffLSBTxtBox;
+        private System.Windows.Forms.TextBox BDiffMSBTxtBox;
+        private System.Windows.Forms.TextBox BDiffLSBTxtBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 

@@ -13,6 +13,12 @@ namespace WindowsFormsApp1
         SerialPort serialPort1 = new SerialPort("portNameNotSet", 9600, Parity.None, 8, StopBits.One);
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
         string serialDataString = "";
+        Int32 channelADiffMSB = -1;
+        Int32 channelADiffLSB = -1;
+        Int32 channelBDiffMSB = -1;
+        Int32 channelBDiffLSB = -1;
+
+        EncoderValues currentEncoderValue = EncoderValues.Unknown;
 
         public Form1()
         {
@@ -81,33 +87,42 @@ namespace WindowsFormsApp1
 
         private void processEncoderStream(int newByte)
         {
-            //if (nextAccelerationAxis == EncoderValues.Unknown)
-            //{
-            //    if (newByte == 255)
-            //    {
-            //        //nextAccelerationAxis = EncoderValues.ChannelAMSB;
-            //    }
-            //}
-            //else if (nextAccelerationAxis == EncoderValues.ChannelAMSB)
-            //{
+            if (currentEncoderValue == EncoderValues.Unknown)
+            {
+                if (newByte == 255)
+                {
+                    currentEncoderValue = EncoderValues.ChannelAMSB;
+                }
+            }
+            else if (currentEncoderValue == EncoderValues.ChannelAMSB)
+            {
+                channelADiffMSB = newByte;
 
-            //    //ThreadHelperClass.SetText(this, AxTxtBox, acceleration.AxValue.ToString());
-            //    //nextAccelerationAxis = EncoderValues.Ay;
-            //}
+                ThreadHelperClass.SetText(this, ADiffMSBTxtBox, channelADiffMSB.ToString());
+                currentEncoderValue = EncoderValues.ChannelALSB;
+            }
 
-            //else if (nextAccelerationAxis == EncoderValues.Ay)
-            //{
-            //    acceleration.AyValue = newByte;
-            //    ThreadHelperClass.SetText(this, AyTxtBox, acceleration.AyValue.ToString());
-            //    nextAccelerationAxis = EncoderValues.Az;
-            //}
+            else if (currentEncoderValue == EncoderValues.ChannelALSB)
+            {
+                channelADiffLSB = newByte;
+                ThreadHelperClass.SetText(this, ADiffLSBTxtBox, channelADiffLSB.ToString());
+                currentEncoderValue = EncoderValues.ChannelBMSB;
+            }
 
-            //else if (nextAccelerationAxis == EncoderValues.Az)
-            //{
-            //    acceleration.AzValue = newByte;
-            //    ThreadHelperClass.SetText(this, AzTxtBox, acceleration.AzValue.ToString());
-            //    nextAccelerationAxis = EncoderValues.Unknown;
-            //}
+            else if (currentEncoderValue == EncoderValues.ChannelBMSB)
+            {
+                channelBDiffMSB = newByte;
+                ThreadHelperClass.SetText(this, BDiffMSBTxtBox, channelBDiffMSB.ToString());
+                currentEncoderValue = EncoderValues.ChannelBLSB;
+            }
+
+
+            else if (currentEncoderValue == EncoderValues.ChannelBLSB) {
+                channelBDiffLSB = newByte;
+                ThreadHelperClass.SetText(this, BDiffLSBTxtBox, channelBDiffLSB.ToString());
+                currentEncoderValue = EncoderValues.Unknown;
+                //processData
+            }
         }
 
 
@@ -149,6 +164,11 @@ namespace WindowsFormsApp1
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
